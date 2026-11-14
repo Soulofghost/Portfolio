@@ -17,21 +17,30 @@ Profile of Alvin MS:
 - LinkedIn: ${PERSONAL_INFO.linkedinUrl}
 - Instagram: ${PERSONAL_INFO.instagramUrl}
 
-Top Skills:
-- Java & Spring Boot (Backend enterprise applications, REST APIs, Microservices, Security)
-- Artificial Intelligence & Python (Machine learning, neural networks, natural language processing)
-- Full Stack Web Development (Next.js, React, TypeScript, Tailwind CSS, HTML/CSS)
-- Databases: MySQL, PostgreSQL, MongoDB, Supabase
-- Tools: Git, GitHub, VS Code, IntelliJ IDEA, Figma
+Top Engineering Skills:
+- Java & Spring Boot: Enterprise backend architectures, Spring Security, Hibernate, Microservices, REST APIs, high concurrency.
+- Artificial Intelligence & Machine Learning: FastAPI, Python, RAG pipelines, dense vector retrieval, LLM orchestration, model governance.
+- Full Stack Web: Next.js (App Router), React 19, TypeScript, Tailwind CSS v4, Framer Motion, Node.js.
+- Databases & Systems: PostgreSQL, MySQL, SQLite with WAL mode, Supabase, Docker, Linux administration.
+- Blockchain & FinTech: Solidity smart contracts, Hardhat, Ethers.js, M-of-N multisignature treasuries, escrow protocols.
 
-Featured Projects:
-1. Smart Disaster Management System: Java, Spring Boot, MySQL. Enterprise system for emergency SOS alerts, relief camp mapping, volunteer dispatching.
-2. Smart Civic Issue Reporting System: React, Supabase. Geolocation GPS issue tracking, complaint workflow management, real-time updates.
-3. AI API Platform & Marketplace: Next.js, Node.js, AI Integration. Token usage management, API key governance, AI developer playground.
+Key Featured Projects:
+1. SENTRIX: Smart Disaster Response & SEM Monitoring Platform. Structural & Environmental Monitoring command platform computing Peak Ground Acceleration (PGA in g), Modified Mercalli Intensity, radial evacuation geo-fencing, and Haversine first-responder transit routing.
+2. CIVIX: Smart Civic Issue Reporting System. Modern citizen engagement application with GPS geolocation tagging, complaint lifecycles, and municipal resolution workflows.
+3. NexaAPIX: AI API Marketplace & Governance Platform. Token consumption tracking, cryptographic API key management, and developer sandbox.
+4. NeuralDesk: AI-Powered Semantic Knowledge Platform. Hybrid vector & lexical BM25 retrieval engine with grounded citations.
+5. TaskForge: Enterprise Project Management SaaS. Zero-lag Kanban workspace with granular RBAC and immutable audit trails.
+6. MultiSafe: Smart Contract Multisignature Treasury. M-of-N consensus protocol with gas-optimized execution.
+7. LogSentinel: SIEM Log Analytics Platform. High-throughput real-time security log parser and brute-force threat detector.
+8. Smart Disaster Management: Java Spring Boot & MySQL emergency SOS and shelter mapping platform.
+
+Startups & Ventures:
+- NEXAURON: FinTech & AI software startup founded by Alvin MS, focusing on high-performance digital tools (MVP in development).
+- HELIX: Co-founded early-stage technology startup focusing on modern software solutions, intelligent applications, and scalable SaaS.
 
 Experience & Leadership:
 - Business Development Partner at TekLearn (2024 - Present): Managing educational tech outreach, strategic partnerships, student workshops, and growth pipelines.
-- B.Tech in Computer Science & Artificial Intelligence student at Mar Baselios Christian College of Engineering and Technology (MBCCET), Peermade (2023 - 2027).
+- B.Tech in Computer Science & Artificial Intelligence at Mar Baselios Christian College of Engineering and Technology (MBCCET), Peermade (2023 - 2027).
 
 Instructions:
 - Keep answers informative, polite, concise (2-4 sentences max), and enthusiastic.
@@ -42,33 +51,49 @@ Instructions:
 export function generateAiResponse(userMessage: string): string {
   const query = userMessage.toLowerCase();
 
+  if (query.includes('sentrix') || query.includes('sem') || query.includes('emergency') || query.includes('seismic')) {
+    return `SENTRIX is Alvin MS's flagship civil defense & Structural & Environmental Monitoring (SEM) platform. It ingests triaxial accelerometer telemetry to compute Peak Ground Acceleration (PGA), evaluates hydraulic dam surge thresholds, and optimizes rescue dispatch via Haversine geodesic routing!`;
+  }
+
+  if (query.includes('civix') || query.includes('civic') || query.includes('infrastructure')) {
+    return `CIVIX is a citizen engagement platform built by Alvin MS that empowers citizens to report public infrastructure issues with precise GPS geotagging, photo proof, and automated municipal resolution lifecycles.`;
+  }
+
+  if (query.includes('nexa') || query.includes('api') || query.includes('marketplace')) {
+    return `NexaAPIX is a full-stack AI API marketplace and governance hub engineered for token consumption metering, cryptographic API key issuance, and live endpoint sandbox testing.`;
+  }
+
   if (query.includes('who is') || query.includes('about') || query.includes('background') || query.includes('bio')) {
-    return `Alvin MS is a Computer Science & AI student, Java Developer, Full Stack Engineer, and Entrepreneur based in Kerala, India. He builds scalable enterprise backend applications in Spring Boot as well as modern futuristic web applications!`;
+    return `Alvin MS is a Computer Science & AI student, Java Developer, Full Stack Engineer, and Entrepreneur based in Kerala, India. He engineers high-reliability distributed systems, AI platforms, and enterprise software!`;
   }
 
   if (query.includes('skill') || query.includes('java') || query.includes('stack') || query.includes('technolog')) {
-    return `Alvin specializes in Java & Spring Boot backend development, Python AI integration, React/Next.js full stack engineering, and databases like MySQL, PostgreSQL, and Supabase.`;
+    return `Alvin specializes in Java Spring Boot backend engineering, Python & FastAPI for AI systems, Next.js / React 19 for modern UI/UX, and relational/vector storage systems including PostgreSQL, MySQL, and SQLite (WAL mode).`;
   }
 
-  if (query.includes('project') || query.includes('disaster') || query.includes('civic') || query.includes('work')) {
-    return `Alvin's key projects include the Smart Disaster Management System (Java Spring Boot + MySQL), Smart Civic Issue Reporting System (React + Supabase), and an AI API Marketplace Platform. You can explore them in the Projects section!`;
+  if (query.includes('project') || query.includes('work') || query.includes('portfolio')) {
+    return `Alvin has engineered a massive 50-repository software portfolio featuring flagship platforms like SENTRIX (Civil Defense SEM), CIVIX (Civic Geotagging), NexaAPIX (AI Governance), NeuralDesk (Semantic RAG), and MultiSafe (Multisig Treasury). Check out the Projects section!`;
+  }
+
+  if (query.includes('startup') || query.includes('venture') || query.includes('nexauron') || query.includes('helix') || query.includes('entrepreneur')) {
+    return `Alvin is currently building two technology startups: NEXAURON (FinTech & AI products) and HELIX (intelligent digital solutions & SaaS). Both are currently in active development.`;
   }
 
   if (query.includes('hire') || query.includes('contact') || query.includes('email') || query.includes('freelance') || query.includes('intern')) {
-    return `Alvin is currently available for Internships, Freelance Projects, Collaborations, and Startup Opportunities! You can reach him directly at ${PERSONAL_INFO.email} or use the Contact section on this page.`;
+    return `Alvin is available for Software Engineering Internships, Full Stack Roles, Freelance Projects, and Startup Collaborations! You can reach him at ${PERSONAL_INFO.email} or use the Contact section on this page.`;
   }
 
   if (query.includes('education') || query.includes('college') || query.includes('study') || query.includes('degree')) {
-    return `Alvin is pursuing his Bachelor of Technology (B.Tech) in Computer Science & Artificial Intelligence at Mar Baselios Christian College of Engineering and Technology (MBCCET), Peermade (2023-2027).`;
+    return `Alvin is pursuing his B.Tech in Computer Science & Artificial Intelligence at Mar Baselios Christian College of Engineering and Technology (MBCCET), Peermade (2023-2027).`;
   }
 
-  if (query.includes('experience') || query.includes('teklearn') || query.includes('job') || query.includes('work')) {
-    return `Alvin currently serves as Business Development Partner at TekLearn, where he drives strategic tech outreach, organizes coding hackathons, and fosters student tech communities.`;
+  if (query.includes('experience') || query.includes('teklearn') || query.includes('job')) {
+    return `Alvin serves as Business Development Partner at TekLearn, where he leads tech outreach, organizes developer workshops, and drives community partnerships across engineering colleges.`;
   }
 
   if (query.includes('resume') || query.includes('cv')) {
-    return `You can view and download Alvin's official resume by clicking the "Download Resume" button in the Hero section or pressing Ctrl+K to open the Command Palette!`;
+    return `You can view and download Alvin's official resume by clicking "Download Resume" in the Hero section or pressing Ctrl+K to open the Quick Access Command Palette!`;
   }
 
-  return `Thanks for asking! Alvin MS is a Computer Science & AI student skilled in Java Spring Boot, Next.js, and Artificial Intelligence. Feel free to explore the interactive sections or send him a direct message via ${PERSONAL_INFO.email}!`;
+  return `Thanks for asking! Alvin MS is a Computer Science & AI engineer specializing in Java Spring Boot, Next.js, and Distributed Systems. Feel free to explore the interactive sections or reach out via ${PERSONAL_INFO.email}!`;
 }

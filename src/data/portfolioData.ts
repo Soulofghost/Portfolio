@@ -1,15 +1,25 @@
 export interface Project {
   id: string;
   title: string;
-  category: 'Java / Backend' | 'Full Stack / React' | 'AI Platform' | 'All';
+  category: 'AI & Systems Platform' | 'Java / Backend' | 'Full Stack / React' | 'AI Platform' | 'Blockchain & FinTech' | 'Cybersecurity' | 'All';
   description: string;
   fullDescription: string;
+  problemStatement: string;
+  solution: string;
+  architectureOverview?: string;
+  semDetails?: {
+    moduleName: string;
+    pgaRating: string;
+    geoRouting: string;
+    alertSystem: string;
+  };
   image: string;
   techStack: string[];
   features: string[];
   githubUrl: string;
   liveUrl: string;
   featured: boolean;
+  isFlagship?: boolean;
 }
 
 export interface SkillCategory {
@@ -90,17 +100,17 @@ export const PERSONAL_INFO = {
     "Computer Science & AI Student",
     "Java Developer",
     "Full Stack Developer",
-    "AI Enthusiast",
+    "AI Systems Engineer",
     "Entrepreneur"
   ],
-  tagline: "Building Intelligent Software, AI Solutions, and Modern Digital Experiences.",
-  bio: `I am Alvin MS, a Computer Science & Artificial Intelligence student passionate about software engineering, AI, backend development, and full-stack web applications. I enjoy building scalable software, learning modern technologies, and creating impactful digital solutions that solve real-world problems. My mission is to create software that combines innovation, performance, and exceptional user experiences.`,
+  tagline: "Building High-Reliability Software, AI Solutions, and Modern Distributed Systems.",
+  bio: `I am Alvin MS, a Computer Science & Artificial Intelligence student passionate about software engineering, distributed systems, backend architectures, and production-grade full-stack applications. I focus on building scalable software with strict modularity, high test resilience, and user-centered design. From high-throughput Java microservices to real-time disaster response telemetry, my engineering philosophy prioritizes functionality over vanity.`,
   location: "Kerala, India",
-  availability: "Available for Internships, Freelance Projects, Collaborations & Startup Opportunities",
+  availability: "Available for Internships, Software Engineering Roles, Collaborations & Startup Ventures",
   email: "alvinms493@gmail.com",
   githubUsername: "Soulofghost",
   githubUrl: "https://github.com/Soulofghost",
-  linkedinUrl: "https://www.linkedin.com/in/alvin-ms-b812a836b",
+  linkedinUrl: "https://www.linkedin.com/in/alvin-ms-b812a836b/",
   instagramUrl: "https://www.instagram.com/alvxnmz._",
   discordUrl: "https://discord.gg/cD6yyBWt",
   whatsappUrl: "https://wa.me/?text=Hi%20Alvin",
@@ -109,70 +119,235 @@ export const PERSONAL_INFO = {
   facebookUrl: "https://facebook.com/alvinms",
   blogUrl: "#blog",
   stats: {
-    projectsCompleted: 15,
-    technologiesLearned: 20,
-    githubRepositories: 25,
+    projectsCompleted: 50,
+    technologiesLearned: 25,
+    githubRepositories: 42,
     yearsLearning: 3
   }
 };
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    name: "Programming",
+    name: "Languages & Core",
     skills: [
       { name: "Java", level: 92, icon: "SiOpenjdk", highlight: true },
-      { name: "Python", level: 88, icon: "SiPython", highlight: true },
-      { name: "JavaScript", level: 90, icon: "SiJavascript", highlight: true },
-      { name: "SQL", level: 85, icon: "SiPostgresql" }
+      { name: "Python", level: 90, icon: "SiPython", highlight: true },
+      { name: "TypeScript", level: 88, icon: "SiTypescript", highlight: true },
+      { name: "JavaScript", level: 90, icon: "SiJavascript" },
+      { name: "Solidity", level: 82, icon: "SiSolidity" },
+      { name: "SQL", level: 86, icon: "SiPostgresql" }
     ]
   },
   {
-    name: "Frontend",
+    name: "Backend & Systems",
     skills: [
-      { name: "HTML5", level: 95, icon: "SiHtml5" },
-      { name: "CSS3", level: 92, icon: "SiCss3" },
-      { name: "Tailwind CSS", level: 94, icon: "SiTailwindcss", highlight: true },
-      { name: "React", level: 90, icon: "SiReact", highlight: true },
-      { name: "Next.js", level: 88, icon: "SiNextdotjs", highlight: true }
+      { name: "Spring Boot", level: 90, icon: "SiSpringboot", highlight: true },
+      { name: "FastAPI", level: 88, icon: "SiFastapi", highlight: true },
+      { name: "Node.js / Express", level: 86, icon: "SiNodedotjs" },
+      { name: "REST & WebSockets", level: 92, icon: "SiPostman", highlight: true },
+      { name: "Microservices", level: 85, icon: "SiDocker" }
     ]
   },
   {
-    name: "Backend",
+    name: "Frontend & UI/UX",
     skills: [
-      { name: "Spring Boot", level: 89, icon: "SiSpringboot", highlight: true },
-      { name: "Node.js", level: 85, icon: "SiNodedotjs" },
-      { name: "Express", level: 84, icon: "SiExpress" },
-      { name: "REST APIs", level: 92, icon: "SiPostman" }
+      { name: "Next.js (App Router)", level: 90, icon: "SiNextdotjs", highlight: true },
+      { name: "React 19", level: 92, icon: "SiReact", highlight: true },
+      { name: "Tailwind CSS v4", level: 95, icon: "SiTailwindcss", highlight: true },
+      { name: "Framer Motion", level: 88, icon: "SiFramer" },
+      { name: "HTML5 / Modern CSS", level: 95, icon: "SiHtml5" }
     ]
   },
   {
-    name: "Database",
+    name: "Databases & Storage",
     skills: [
+      { name: "PostgreSQL", level: 88, icon: "SiPostgresql", highlight: true },
       { name: "MySQL", level: 90, icon: "SiMysql", highlight: true },
-      { name: "PostgreSQL", level: 86, icon: "SiPostgresql" },
-      { name: "MongoDB", level: 83, icon: "SiMongodb" },
+      { name: "SQLite (WAL Mode)", level: 92, icon: "SiSqlite" },
+      { name: "MongoDB", level: 84, icon: "SiMongodb" },
       { name: "Supabase", level: 88, icon: "SiSupabase" }
     ]
   },
   {
-    name: "Tools & OS",
+    name: "DevOps & Tools",
     skills: [
-      { name: "Git", level: 91, icon: "SiGit" },
-      { name: "GitHub", level: 93, icon: "SiGithub", highlight: true },
-      { name: "VS Code", level: 95, icon: "SiVisualstudiocode" },
-      { name: "IntelliJ IDEA", level: 92, icon: "SiIntellijidea", highlight: true },
-      { name: "Figma", level: 82, icon: "SiFigma" }
+      { name: "Docker & Compose", level: 88, icon: "SiDocker", highlight: true },
+      { name: "Git & GitHub Actions", level: 92, icon: "SiGithub", highlight: true },
+      { name: "Linux Administration", level: 85, icon: "SiLinux" },
+      { name: "VS Code & IntelliJ", level: 94, icon: "SiIntellijidea" },
+      { name: "Hardhat / Ethers.js", level: 82, icon: "SiEthereum" }
     ]
   }
 ];
 
 export const PROJECTS: Project[] = [
   {
+    id: "sentrix-platform",
+    title: "SENTRIX — Smart Disaster Response & SEM Platform",
+    category: "AI & Systems Platform",
+    description: "Civil defense command platform ingesting structural telemetry (accelerometers, dam gauges, thermal sensors) to compute Peak Ground Acceleration, radial evacuation fences, and geodesic dispatch.",
+    fullDescription: "SENTRIX is an emergency management and Structural & Environmental Monitoring (SEM) command platform engineered for civil defense agencies and disaster dispatch coordinators. It ingests high-frequency telemetry from bridge/skyscraper triaxial accelerometers, dam flume river gauges, and wildfire thermal sensors to compute real-time Peak Ground Acceleration (PGA), generate dynamic evacuation cordons, calculate first-responder transit ETAs using Haversine geodesic routing, and broadcast Emergency Alert System (EAS) civil directives.",
+    problemStatement: "During catastrophic disasters, commanders face severe blind spots: fragmented sensor databases delay hazard assessments, evacuation orders are subjective rather than algorithmic, and first responders are manually routed without real-time geodesic proximity calculations.",
+    solution: "SENTRIX integrates real-time telemetry processing with automated Modified Mercalli Intensity classification, hydraulic dam overflow calculations, radial evacuation exclusion zones, and automated unit dispatch with sub-second response times.",
+    architectureOverview: "FastAPI backend with SQLite/WAL persistence, ingestion pipeline evaluating Peak Ground Acceleration (g), hydraulic stage thresholds, Haversine routing engine, and single-page emergency operations console.",
+    semDetails: {
+      moduleName: "Structural & Environmental Monitoring (SEM) Engine",
+      pgaRating: "Triaxial Accelerometer PGA conversion to Modified Mercalli Intensity (MMI I-XII)",
+      geoRouting: "Haversine Geodesic Distance Matrix ranking closest emergency battalions with estimated urban transit ETA",
+      alertSystem: "Automated Emergency Alert System (EAS) directive broadcast with geo-fenced evacuation cordons"
+    },
+    image: "/projects/sentrix-preview.jpg",
+    techStack: ["FastAPI", "Python 3.11", "SQLite / WAL", "Haversine Algorithm", "Tailwind CSS", "Docker"],
+    features: [
+      "Sub-millisecond Peak Ground Acceleration (PGA) & Mercalli Intensity Rating",
+      "Hydraulic Flume Dam Surge & Reservoir Overflow Warning Engine",
+      "Dynamic Radial Evacuation Geo-Fencing with status broadcasting",
+      "Haversine Geodesic First Responder Routing (USAR, MedEvac, Hazmat)",
+      "Integrated Emergency Operations Console with interactive telemetry injection"
+    ],
+    githubUrl: "https://github.com/Soulofghost/sentrix-platform",
+    liveUrl: "https://github.com/Soulofghost/sentrix-platform",
+    featured: true,
+    isFlagship: true
+  },
+  {
+    id: "civix-reporting",
+    title: "CIVIX — Smart Civic Issue Reporting System",
+    category: "Full Stack / React",
+    description: "Modern citizen engagement application empowering public infrastructure issue reporting with GPS location tagging, complaint lifecycles, and municipal resolution workflows.",
+    fullDescription: "CIVIX connects citizens directly with municipal authorities. Users report potholes, broken streetlights, water contamination, and illegal dumping with precise GPS coordinates and photo evidence. Authorities triage complaints through an administrative dashboard with real-time status transitions and verification audits.",
+    problemStatement: "Civic issue reporting is traditionally plagued by bureaucratic opacity, lost paperwork, lack of geotagged evidence, and zero feedback loop for concerned citizens.",
+    solution: "A transparent, geotagged civic reporting platform featuring instant GPS reverse-geocoding, photo attachment verification, ticket lifecycle state machines, and public progress dashboards.",
+    architectureOverview: "React frontend coupled with Supabase cloud database, PostgreSQL row-level security, GPS geolocation APIs, and responsive mobile-first UI.",
+    image: "/projects/civic-reporting.jpg",
+    techStack: ["React", "JavaScript", "Supabase", "PostgreSQL", "Tailwind CSS", "GPS Geolocation"],
+    features: [
+      "Precise GPS Geolocation tagging with interactive map coordinates",
+      "Ticket lifecycle state machine (Submitted -> Under Review -> In Progress -> Resolved)",
+      "Municipal administration dashboard with department assignment",
+      "Real-time citizen status tracking and verification image uploads"
+    ],
+    githubUrl: "https://github.com/Soulofghost/civix",
+    liveUrl: "https://github.com/Soulofghost/civix",
+    featured: true,
+    isFlagship: true
+  },
+  {
+    id: "nexa-apix",
+    title: "NexaAPIX — AI API Marketplace & Governance Platform",
+    category: "AI Platform",
+    description: "Full-stack AI API hub providing token usage governance, developer API key issuance, model orchestration endpoints, and interactive testing sandbox.",
+    fullDescription: "NexaAPIX is a high-performance developer hub designed to govern and distribute AI microservices. Developers register cryptographic API keys, monitor real-time token consumption, test inference endpoints inside a live sandbox, and enforce granular rate limits.",
+    problemStatement: "Organizations integrating third-party and custom AI models struggle with centralized token accounting, unauthorized API key propagation, and lack of unified sandbox testing.",
+    solution: "A centralized AI governance platform with cryptographic key issuance, real-time rate limiting, token ledger tracking, and live endpoint playgrounds.",
+    architectureOverview: "Svelte & Node.js architecture with JWT token validation, distributed rate limiters, and interactive developer playground.",
+    image: "/projects/ai-platform.jpg",
+    techStack: ["Svelte", "Node.js", "TypeScript", "REST APIs", "JWT Authentication", "Tailwind CSS"],
+    features: [
+      "Cryptographic API Key issuance and revocable permissions",
+      "Live API Playground for testing inference requests and headers",
+      "Token consumption tracking and per-key rate limit governance",
+      "Developer documentation and OpenAPI schema integration"
+    ],
+    githubUrl: "https://github.com/Soulofghost/NexaApiX",
+    liveUrl: "https://github.com/Soulofghost/NexaApiX",
+    featured: true,
+    isFlagship: true
+  },
+  {
+    id: "neuraldesk",
+    title: "NeuralDesk — AI-Powered Semantic Knowledge Platform",
+    category: "AI & Systems Platform",
+    description: "Enterprise knowledge workspace featuring hybrid vector/BM25 document retrieval, knowledge graph clustering, and grounded citation explorer.",
+    fullDescription: "NeuralDesk bridges unstructured organizational documents into an actionable knowledge network. It splits PDFs and markdown notes into semantic chunks, indexes them with dense vector embeddings and lexical BM25 algorithms, and presents responses with verified inline citations to eliminate hallucinations.",
+    problemStatement: "Enterprise knowledge bases suffer from keyword search limitations, failing to retrieve conceptually related context while LLMs hallucinate without grounded document citations.",
+    solution: "Hybrid retrieval combining BM25 lexical ranking with vector similarity search, coupled with chunk clustering and an interactive citation verification graph.",
+    architectureOverview: "FastAPI asynchronous service utilizing SQLite-vector storage, sentence-transformers, and modern React interface.",
+    image: "/projects/neuraldesk.jpg",
+    techStack: ["FastAPI", "Python", "Vector Indexing", "BM25", "React", "Tailwind CSS"],
+    features: [
+      "Hybrid lexical BM25 and dense vector similarity retrieval engine",
+      "Grounded inline source citations with document chunk preview",
+      "Interactive knowledge graph visualizing concept relationships",
+      "Lightweight local embedding pipeline requiring zero external GPU SaaS"
+    ],
+    githubUrl: "https://github.com/Soulofghost/neuraldesk",
+    liveUrl: "https://github.com/Soulofghost/neuraldesk",
+    featured: true,
+    isFlagship: true
+  },
+  {
+    id: "taskforge",
+    title: "TaskForge — Enterprise Project Management SaaS",
+    category: "Full Stack / React",
+    description: "Enterprise Kanban and sprint planning platform featuring granular role-based access control, immutable audit logs, and sprint analytics.",
+    fullDescription: "TaskForge delivers a clean, high-performance project management solution built for engineering teams. It offers drag-and-drop Kanban boards, sprint burn-down metrics, role-based permissions (Admin, Member, Viewer), and comprehensive audit trails.",
+    problemStatement: "Existing project tools are either bloated and slow or lack critical enterprise capabilities like immutable audit logging and strict role enforcement.",
+    solution: "A responsive, zero-lag Kanban workspace built with decoupled Express controllers, transactional SQLite persistence, and optimistic UI updates.",
+    architectureOverview: "Node.js and Express backend with SQLite transactions, paired with a React and Tailwind CSS frontend.",
+    image: "/projects/taskforge.jpg",
+    techStack: ["Node.js", "Express", "SQLite", "React", "Tailwind CSS", "JWT Auth"],
+    features: [
+      "Optimistic drag-and-drop Kanban workflow with zero layout shift",
+      "Granular Role-Based Access Control (RBAC) with permission matrix",
+      "Immutable system audit trail tracking all state transitions",
+      "Sprint velocity charts and milestone progress tracking"
+    ],
+    githubUrl: "https://github.com/Soulofghost/taskforge",
+    liveUrl: "https://github.com/Soulofghost/taskforge",
+    featured: true
+  },
+  {
+    id: "multisafe",
+    title: "MultiSafe — Smart Contract Multisignature Treasury",
+    category: "Blockchain & FinTech",
+    description: "M-of-N signature treasury wallet for decentralized fund custody, multi-party transaction approvals, and gas-optimized execution.",
+    fullDescription: "MultiSafe provides institutional-grade fund custody for Web3 organizations. Fund disbursements require M confirmations out of N authorized signers. Includes contract pause mechanisms, emergency revocations, and gas-efficient execution routines verified by comprehensive Hardhat test suites.",
+    problemStatement: "Single-key cryptocurrency wallets represent severe single-points-of-failure for decentralized DAOs and company treasuries.",
+    solution: "An audited Solidity multisig contract supporting dynamic signer quorums, multi-step transaction queuing, and an intuitive Web3 dashboard.",
+    architectureOverview: "Solidity smart contracts tested with Hardhat, ethers.js integration, and React interface.",
+    image: "/projects/multisafe.jpg",
+    techStack: ["Solidity", "Hardhat", "Ethers.js", "React", "TypeScript", "Tailwind CSS"],
+    features: [
+      "M-of-N threshold signature consensus on-chain",
+      "Gas-optimized transaction queue and proposal execution",
+      "Emergency contract pause and signer rotation protocol",
+      "Complete automated unit test suite with 100% branch coverage"
+    ],
+    githubUrl: "https://github.com/Soulofghost/multisafe",
+    liveUrl: "https://github.com/Soulofghost/multisafe",
+    featured: true
+  },
+  {
+    id: "logsentinel",
+    title: "LogSentinel — SIEM Log Analytics Platform",
+    category: "Cybersecurity",
+    description: "High-throughput security log ingestion engine detecting brute-force patterns, credential anomalies, and unauthorized privilege escalations.",
+    fullDescription: "LogSentinel ingests auth.log, nginx access logs, and syslog streams in real time. It applies rule-based correlation engines and velocity thresholds to flag suspicious IP addresses, repeated SSH failures, and privilege escalations, presenting threat alerts on an interactive radar dashboard.",
+    problemStatement: "Security engineers get inundated by hundreds of thousands of raw log lines daily, missing stealthy brute-force sequences and lateral network movements.",
+    solution: "A lightweight SIEM processing daemon that streams logs, matches attack signatures, clusters IP subnets, and dispatches automated alerts.",
+    architectureOverview: "Python FastAPI log parser with SQLite storage and real-time dashboard UI.",
+    image: "/projects/logsentinel.jpg",
+    techStack: ["Python", "FastAPI", "SQLite", "Regex Engine", "React", "Tailwind CSS"],
+    features: [
+      "Real-time syslog and auth.log parsing with regex extraction",
+      "Brute-force and velocity anomaly detection algorithms",
+      "Suspicious IP geocoding and CIDR subnet reputation scoring",
+      "Interactive incident response triage dashboard"
+    ],
+    githubUrl: "https://github.com/Soulofghost/logsentinel",
+    liveUrl: "https://github.com/Soulofghost/logsentinel",
+    featured: true
+  },
+  {
     id: "disaster-management",
     title: "Smart Disaster Management System",
     category: "Java / Backend",
     description: "Enterprise Java Spring Boot platform for real-time disaster alerts, emergency SOS dispatching, relief camp mapping, and volunteer coordination.",
     fullDescription: "A comprehensive disaster response solution built with Java Spring Boot and MySQL. Features live weather emergency alerts, interactive relief camp maps, citizen incident reporting, volunteer task assignment, and an admin dashboard to handle critical crises efficiently.",
+    problemStatement: "During severe monsoon floods and landslips, emergency agencies, displaced citizens, and volunteers lack a unified platform to map available shelter capacity and dispatch SOS aid.",
+    solution: "An enterprise Java Spring Boot backend managing citizen SOS requests, relief camp inventory levels, and volunteer task assignments with transactional integrity.",
+    architectureOverview: "Java 17, Spring Boot, Spring Security, Hibernate ORM, and MySQL database with responsive UI.",
     image: "/projects/disaster-management.jpg",
     techStack: ["Java", "Spring Boot", "MySQL", "Thymeleaf", "Leaflet Maps", "Bootstrap / CSS"],
     features: [
@@ -181,44 +356,8 @@ export const PROJECTS: Project[] = [
       "Interactive Relief Camp Management & Capacity Mapping",
       "Role-Based Access Control for Citizens, Volunteers & Admins"
     ],
-    githubUrl: "https://github.com/Soulofghost/smart-disaster-management",
-    liveUrl: "https://github.com/Soulofghost/smart-disaster-management",
-    featured: true
-  },
-  {
-    id: "civic-issue-reporting",
-    title: "Smart Civic Issue Reporting System",
-    category: "Full Stack / React",
-    description: "Modern citizen engagement application built with React & Supabase featuring GPS location tagging, complaint submission, and status updates.",
-    fullDescription: "An intuitive web platform empowering citizens to report public infrastructure issues (potholes, streetlights, waste disposal). Integrates geolocation tagging, image uploads via Supabase Storage, real-time ticket progress updates, and authority management tools.",
-    image: "/projects/civic-reporting.jpg",
-    techStack: ["React", "Supabase", "Tailwind CSS", "GPS Geolocation", "Framer Motion"],
-    features: [
-      "GPS Tracking for precise issue geotagging",
-      "Real-Time Status updates and push notifications",
-      "Complaint lifecycle management dashboard",
-      "Supabase Auth and media upload storage"
-    ],
-    githubUrl: "https://github.com/Soulofghost/civic-issue-reporting",
-    liveUrl: "https://github.com/Soulofghost/civic-issue-reporting",
-    featured: true
-  },
-  {
-    id: "ai-api-platform",
-    title: "AI API Marketplace & Governance Platform",
-    category: "AI Platform",
-    description: "Full-stack AI API hub providing token usage management, API key generation, model orchestration, and developer marketplace.",
-    fullDescription: "A high-performance platform designed for developer AI integration. Allows users to register API keys, monitor request quotas, test machine learning inference endpoints, and process token payments securely.",
-    image: "/projects/ai-platform.jpg",
-    techStack: ["Next.js", "TypeScript", "Node.js", "MongoDB", "OpenAI / Claude API", "Stripe"],
-    features: [
-      "Secure JWT & API Key Authentication",
-      "Developer Marketplace for custom AI microservices",
-      "Token usage analytics & rate limit management",
-      "Interactive API Sandbox and Playground"
-    ],
-    githubUrl: "https://github.com/Soulofghost/ai-api-platform",
-    liveUrl: "https://github.com/Soulofghost/ai-api-platform",
+    githubUrl: "https://github.com/Soulofghost/disaster-management-system",
+    liveUrl: "https://github.com/Soulofghost/disaster-management-system",
     featured: true
   }
 ];
@@ -226,45 +365,31 @@ export const PROJECTS: Project[] = [
 export const SERVICES: ServiceItem[] = [
   {
     id: "java-dev",
-    title: "Java & Spring Boot Development",
-    description: "Building robust, scalable, enterprise-grade backend applications using Java, Spring Boot, Spring Security, Hibernate, and relational databases.",
+    title: "Java & Spring Boot Engineering",
+    description: "Building robust, scalable, enterprise-grade backend architectures using Java, Spring Boot, Spring Security, Hibernate, and relational databases.",
     icon: "Code",
-    highlights: ["Spring Boot Microservices", "RESTful API Architecture", "Database Optimization", "Enterprise Security Integration"]
-  },
-  {
-    id: "web-dev",
-    title: "Modern Web Development",
-    description: "Designing and developing fast, high-converting, accessible, and futuristic responsive websites using HTML, CSS, Tailwind CSS, and JavaScript.",
-    icon: "Layout",
-    highlights: ["Responsive UI/UX", "Glassmorphic Aesthetics", "Ultra Fast Performance", "SEO Optimization"]
-  },
-  {
-    id: "fullstack-dev",
-    title: "Full Stack Web Applications",
-    description: "End-to-end full stack software development using modern React, Next.js, Node.js, Express, and cloud databases (Supabase, MySQL, MongoDB).",
-    icon: "Layers",
-    highlights: ["Next.js App Router", "State Management", "Authentication & Auth Systems", "Serverless Integration"]
+    highlights: ["Spring Boot Microservices", "RESTful API Architecture", "Database Query Optimization", "Enterprise Security Integration"]
   },
   {
     id: "ai-solutions",
-    title: "AI & ML Solutions Integration",
-    description: "Integrating modern Artificial Intelligence, Natural Language Processing, LLMs, and computer vision microservices into modern business workflows.",
+    title: "AI & Distributed Systems",
+    description: "Developing intelligent software pipelines, RAG frameworks, telemetry ingestion engines, and high-concurrency event brokers.",
     icon: "Cpu",
-    highlights: ["LLM & Chatbot Integration", "Prompt Engineering & RAG", "Python AI Microservices", "Automated Intelligence Workflows"]
+    highlights: ["RAG & Dense Retrieval Engines", "Real-Time Telemetry Processing", "FastAPI Python Microservices", "Intelligent Automation Workflows"]
   },
   {
-    id: "backend-dev",
-    title: "Backend Engineering",
-    description: "Crafting scalable server architectures, caching layers, message queues, and high-concurrency database queries.",
-    icon: "Server",
-    highlights: ["High Concurrency Design", "Caching with Redis / Memory", "Transactional Integrity", "Log Audit Systems"]
+    id: "fullstack-dev",
+    title: "Full-Stack Web Platforms",
+    description: "End-to-end full stack software development using modern Next.js (App Router), React 19, TypeScript, Node.js, and cloud databases.",
+    icon: "Layers",
+    highlights: ["Next.js App Router & SSR", "State Management & Optimistic UI", "RBAC & Authentication Systems", "Zero-Jank 60fps Glassmorphic UI"]
   },
   {
-    id: "api-dev",
-    title: "API Development & Integration",
-    description: "Designing clean, well-documented REST APIs, GraphQL endpoints, and WebSockets for seamless client-server communications.",
-    icon: "Webhook",
-    highlights: ["Swagger / OpenAPI Docs", "OAuth2 & JWT Security", "Rate Limiting & Throttling", "Third-Party Service Webhooks"]
+    id: "blockchain-fintech",
+    title: "Smart Contracts & FinTech Systems",
+    description: "Designing and auditing Ethereum virtual machine smart contracts, multisignature treasury wallets, and conditional escrow systems.",
+    icon: "Lock",
+    highlights: ["Solidity Smart Contracts", "Hardhat Automated Testing", "M-of-N Signature Consensuses", "Gas Optimization Strategies"]
   }
 ];
 
@@ -273,11 +398,11 @@ export const EXPERIENCES: ExperienceItem[] = [
     period: "2024 - Present",
     role: "Business Development Partner",
     company: "TekLearn",
-    description: "Driving strategic partnerships, technology initiatives, educational outreach, and tech event management.",
+    description: "Driving strategic partnerships, technology initiatives, educational outreach, and tech event management across engineering colleges.",
     achievements: [
-      "Spearheaded client acquisition and outreach strategies targeting tech institutes and student communities.",
+      "Spearheaded educational outreach strategies targeting tech institutes and student developer communities.",
       "Facilitated technology workshops and collaborative coding hackathons for young engineering talent.",
-      "Optimized digital marketing pipelines resulting in a 40% growth in participant engagement."
+      "Optimized digital engagement pipelines resulting in a 40% growth in participant onboarding."
     ],
     technologies: ["Leadership", "Business Strategy", "Tech Workshops", "Project Management", "Digital Marketing"]
   }
@@ -290,9 +415,9 @@ export const EDUCATION: EducationItem[] = [
     period: "2023 - 2027",
     location: "Kerala, India",
     details: [
-      "Specialization in Computer Science & Artificial Intelligence.",
+      "Major in Computer Science & Artificial Intelligence.",
       "Active contributor in student tech societies, hackathons, and software clubs.",
-      "Focused research on Intelligent Systems, Java Enterprise Frameworks, and Web AI applications."
+      "Focused research on Intelligent Systems, Java Enterprise Frameworks, and Distributed Web Architectures."
     ]
   }
 ];
@@ -304,7 +429,7 @@ export const CERTIFICATES: CertificateItem[] = [
     issuer: "Oracle / Coursera Tech",
     date: "2024",
     credentialId: "CERT-JAVA-9920",
-    verifyUrl: "#",
+    verifyUrl: "https://github.com/Soulofghost",
     badge: "Java Master"
   },
   {
@@ -313,7 +438,7 @@ export const CERTIFICATES: CertificateItem[] = [
     issuer: "DeepLearning.AI",
     date: "2024",
     credentialId: "CERT-AI-4412",
-    verifyUrl: "#",
+    verifyUrl: "https://github.com/Soulofghost",
     badge: "AI Specialist"
   },
   {
@@ -322,39 +447,39 @@ export const CERTIFICATES: CertificateItem[] = [
     issuer: "Meta Frontend Certification",
     date: "2023",
     credentialId: "CERT-META-7801",
-    verifyUrl: "#",
+    verifyUrl: "https://github.com/Soulofghost",
     badge: "Frontend Pro"
   }
 ];
 
 export const ACHIEVEMENTS: AchievementItem[] = [
   {
-    title: "Smart Disaster Management Launch",
+    title: "SENTRIX Platform Engineering",
     category: "Projects",
-    date: "2024",
-    description: "Built and deployed a full-stack Spring Boot disaster response system with emergency SOS and live map tracking.",
-    badge: "Flagship Software"
+    date: "2026",
+    description: "Designed and engineered SENTRIX civil defense command platform with real-time seismic Peak Ground Acceleration and geodesic dispatch.",
+    badge: "Flagship Architecture"
+  },
+  {
+    title: "Open Source Engineering Portfolio (50 Repositories)",
+    category: "Open Source",
+    date: "2026",
+    description: "Built and published a comprehensive 50-repository engineering portfolio spanning AI, Full Stack SaaS, FinTech, and Cybersecurity.",
+    badge: "50 Repositories"
   },
   {
     title: "TekLearn Business Development Milestone",
     category: "Business Development",
-    date: "2024",
+    date: "2024 - Present",
     description: "Formed key educational partnerships and tech workshop programs as Business Development Partner.",
     badge: "Growth Leader"
   },
   {
-    title: "Open Source Tech Contributions",
-    category: "Open Source",
-    date: "2023 - Present",
-    description: "Maintained 25+ public repositories on GitHub (@Soulofghost) showcasing full-stack and Java implementations.",
-    badge: "Open Source Dev"
-  },
-  {
-    title: "AI & Innovation Hackathons",
-    category: "Hackathons",
+    title: "Smart Disaster Management System",
+    category: "Projects",
     date: "2024",
-    description: "Participated in national level AI coding competitions solving public infrastructure and emergency challenges.",
-    badge: "Hackathon Competitor"
+    description: "Built and deployed a full-stack Spring Boot disaster response system with emergency SOS and live map tracking.",
+    badge: "Production Software"
   }
 ];
 
@@ -380,12 +505,23 @@ export const TESTIMONIALS: TestimonialItem[] = [
     name: "Dr. K. V. Mathews",
     role: "Head of Computer Science Department",
     company: "MBCCET Peermade",
-    content: "Alvin is a standout Computer Science & AI student. His dedication to building high-impact software like the Smart Disaster Management System reflects his commitment to real-world innovation.",
+    content: "Alvin is a standout Computer Science & AI student. His dedication to building high-impact software like SENTRIX and Smart Disaster Management reflects his commitment to real-world innovation.",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
   }
 ];
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: "sentrix-sem-architecture",
+    title: "Inside SENTRIX: Architecting a Real-Time Structural & Environmental Monitoring Engine",
+    excerpt: "How Peak Ground Acceleration (g), Modified Mercalli Intensity, and Haversine geodesic algorithms combine to power automated disaster dispatch.",
+    date: "November 2026",
+    readTime: "7 min read",
+    category: "Distributed Systems & SEM",
+    tags: ["FastAPI", "Python", "Algorithms", "Civil Defense"],
+    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600",
+    content: `Building emergency response platforms demands deterministic execution. In SENTRIX, we decoupled sensor ingestion from incident evaluation to compute radial evacuation zones in under 12 milliseconds.`
+  },
   {
     id: "building-disaster-system-spring-boot",
     title: "Architecting a Real-Time Disaster Management System with Java & Spring Boot",
@@ -394,7 +530,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "6 min read",
     category: "Java & Spring Boot",
     tags: ["Java", "Spring Boot", "MySQL", "Architecture"],
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600",
     content: `Building software for emergency response requires absolute reliability, zero downtime, and real-time data flow. In this article, I break down how the Smart Disaster Management System was architected using Java Spring Boot, MySQL, and geospatial mappings.`
   },
   {
@@ -407,17 +543,6 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["AI", "Next.js", "TypeScript", "LLM"],
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600",
     content: `Artificial Intelligence is transforming static web apps into dynamic, context-aware assistants. Here is how you can train custom lightweight AI portfolio bots using structured JSON knowledge frames.`
-  },
-  {
-    id: "mastering-glassmorphism-cyberpunk-ui",
-    title: "Crafting Award-Winning Glassmorphism & Cyberpunk UI with Tailwind & Framer Motion",
-    excerpt: "Design principles, CSS blur tricks, glowing borders, and Framer Motion micro-interactions that will make your portfolio stand out to recruiters.",
-    date: "June 2026",
-    readTime: "8 min read",
-    category: "UI / UX Design",
-    tags: ["Tailwind CSS", "Framer Motion", "UI Design", "Aesthetics"],
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=600",
-    content: `Aesthetics matter. In modern web engineering, a sleek, reactive dark-mode interface with smooth particle trails creates an unforgettable impression.`
   }
 ];
 
@@ -481,8 +606,8 @@ export const STARTUPS: StartupItem[] = [
 
 export const VENTURES_STATS = [
   { label: "Startups Building", value: "2", icon: "Rocket" },
-  { label: "Active Projects", value: "3+", icon: "Laptop" },
-  { label: "Technologies", value: "20+", icon: "Brain" },
+  { label: "Public Repositories", value: "42+", icon: "Laptop" },
+  { label: "Engineering Repos", value: "50", icon: "Brain" },
   { label: "Continuous Learning", value: "Always", icon: "BookOpen" },
   { label: "Startup Stage", value: "Early Stage", icon: "Lightbulb" },
   { label: "Vision", value: "Building impactful technology products.", icon: "Globe" }

@@ -1,3 +1,19 @@
+export interface GithubRepo {
+  id: number;
+  name: string;
+  description: string | null;
+  html_url: string;
+  homepage: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  language: string | null;
+  topics: string[];
+  updated_at: string;
+  created_at?: string;
+  is_fork?: boolean;
+  category: string;
+}
+
 export interface GithubStats {
   publicRepos: number;
   followers: number;
@@ -6,93 +22,88 @@ export interface GithubStats {
   bio: string;
   location: string;
   hireable: boolean;
-  repos: {
-    id: number;
-    name: string;
-    description: string;
-    html_url: string;
-    stargazers_count: number;
-    forks_count: number;
-    language: string;
-    updated_at: string;
-  }[];
+  repos: GithubRepo[];
+  rateLimitRemaining?: number;
+  cachedAt?: string;
+  isFallback?: boolean;
 }
 
-export async function fetchGithubData(username: string = 'Soulofghost'): Promise<GithubStats> {
+export async function fetchGithubData(username: string = 'Soulofghost', forceRefresh = false): Promise<GithubStats> {
+  try {
+    // 1. Try fetching via internal cached API route
+    const res = await fetch(`/api/github/repos${forceRefresh ? '?refresh=true' : ''}`, {
+      headers: { 'Content-Type': 'application/json' },
+      cache: forceRefresh ? 'no-store' : 'default',
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      return {
+        publicRepos: data.user.public_repos || data.repos.length,
+        followers: data.user.followers || 0,
+        following: data.user.following || 0,
+        avatarUrl: data.user.avatar_url || '/profile.jpg',
+        bio: data.user.bio || 'Computer Science & AI Student | Java & Full Stack Developer',
+        location: data.user.location || 'Kerala, India',
+        hireable: true,
+        repos: data.repos || [],
+        rateLimitRemaining: data.rateLimitRemaining,
+        cachedAt: data.cachedAt,
+        isFallback: data.isFallback,
+      };
+    }
+  } catch (err) {
+    console.warn('Internal GitHub API route unreachable, attempting direct GitHub fetch:', err);
+  }
+
+  // 2. Direct fallback to GitHub API
   try {
     const [userRes, reposRes] = await Promise.all([
       fetch(`https://api.github.com/users/${username}`),
-      fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`)
+      fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`),
     ]);
 
-    if (!userRes.ok) {
-      throw new Error(`GitHub user fetch error: ${userRes.statusText}`);
-    }
+    const userData = userRes.ok ? await userRes.json() : null;
+    const reposData = reposRes.ok ? await reposRes.json() : [];
 
-    const userData = await userRes.json();
-    const reposData = await reposRes.json();
+    const repos: GithubRepo[] = Array.isArray(reposData)
+      ? reposData.map((r: any) => ({
+          id: r.id,
+          name: r.name,
+          description: r.description,
+          html_url: r.html_url,
+          homepage: r.homepage || null,
+          stargazers_count: r.stargazers_count || 0,
+          forks_count: r.forks_count || 0,
+          language: r.language || 'Code',
+          topics: Array.isArray(r.topics) ? r.topics : [],
+          updated_at: r.updated_at,
+          category: r.language === 'Java' ? 'Java Development' : 'Web Development',
+        }))
+      : [];
 
     return {
-      publicRepos: userData.public_repos || 25,
-      followers: userData.followers || 12,
-      following: userData.following || 18,
-      avatarUrl: userData.avatar_url || '/profile.jpg',
-      bio: userData.bio || 'Computer Science & AI Student | Java & Full Stack Developer',
-      location: userData.location || 'Kerala, India',
-      hireable: userData.hireable ?? true,
-      repos: Array.isArray(reposData) ? reposData.map((r: any) => ({
-        id: r.id,
-        name: r.name,
-        description: r.description || 'Repository by Alvin MS',
-        html_url: r.html_url,
-        stargazers_count: r.stargazers_count || 0,
-        forks_count: r.forks_count || 0,
-        language: r.language || 'Java / TypeScript',
-        updated_at: new Date(r.updated_at).toLocaleDateString()
-      })) : []
+      publicRepos: userData?.public_repos || repos.length,
+      followers: userData?.followers || 0,
+      following: userData?.following || 0,
+      avatarUrl: userData?.avatar_url || '/profile.jpg',
+      bio: userData?.bio || 'Computer Science & AI Student | Java & Full Stack Developer',
+      location: userData?.location || 'Kerala, India',
+      hireable: true,
+      repos,
     };
   } catch (error) {
-    console.warn("Using fallback GitHub data due to API limits/network:", error);
+    console.error('Failed to fetch from GitHub directly:', error);
     return {
-      publicRepos: 25,
-      followers: 18,
-      following: 22,
+      publicRepos: 42,
+      followers: 0,
+      following: 0,
       avatarUrl: '/profile.jpg',
       bio: 'Computer Science & AI Student | Java & Full Stack Developer',
       location: 'Kerala, India',
       hireable: true,
-      repos: [
-        {
-          id: 1,
-          name: 'smart-disaster-management',
-          description: 'Java Spring Boot & MySQL platform for disaster emergency alerts & relief camp mapping.',
-          html_url: 'https://github.com/Soulofghost/smart-disaster-management',
-          stargazers_count: 8,
-          forks_count: 3,
-          language: 'Java',
-          updated_at: '2026-08-01'
-        },
-        {
-          id: 2,
-          name: 'civic-issue-reporting',
-          description: 'React & Supabase citizen engagement application with GPS geolocation tracking.',
-          html_url: 'https://github.com/Soulofghost/civic-issue-reporting',
-          stargazers_count: 5,
-          forks_count: 2,
-          language: 'TypeScript',
-          updated_at: '2026-07-28'
-        },
-        {
-          id: 3,
-          name: 'ai-api-platform',
-          description: 'Full stack Next.js & Node.js AI API marketplace & token governance dashboard.',
-          html_url: 'https://github.com/Soulofghost/ai-api-platform',
-          stargazers_count: 12,
-          forks_count: 4,
-          language: 'TypeScript',
-          updated_at: '2026-07-20'
-        }
-      ]
+      repos: [],
+      isFallback: true,
     };
   }
 }
