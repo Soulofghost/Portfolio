@@ -64,7 +64,7 @@ function ContactSection() {
   }, [formData]);
 
   return (
-    <section id="contact" className="py-24 relative z-10 bg-slate-950/60 scroll-mt-20 overflow-hidden">
+    <section id="contact" className="py-24 relative z-10 bg-slate-950/60 scroll-mt-20 overflow-x-clip">
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div

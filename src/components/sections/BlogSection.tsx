@@ -11,7 +11,7 @@ export default function BlogSection() {
   const [activeArticle, setActiveArticle] = useState<BlogPost | null>(null);
 
   return (
-    <section id="blog" className="py-24 relative z-10 overflow-hidden">
+    <section id="blog" className="py-24 relative z-10 overflow-x-clip">
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div

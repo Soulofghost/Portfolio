@@ -72,6 +72,18 @@ function Home() {
     return () => window.removeEventListener('keydown', handleGlobalKeyDown);
   }, [isResumeModalOpen, isMatrixActive, isAdminModalOpen]);
 
+  // Lock background page scroll strictly while full-screen modals/overlays are open, restore immediately on close
+  useEffect(() => {
+    const isAnyModalOpen = isResumeModalOpen || isCommandPaletteOpen || isMatrixActive || isAdminModalOpen;
+    if (isAnyModalOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isResumeModalOpen, isCommandPaletteOpen, isMatrixActive, isAdminModalOpen]);
+
   return (
     <main className="relative min-h-screen bg-[#080c14] text-slate-100 max-w-full overflow-x-clip selection:bg-emerald-500 selection:text-black">
       {/* Scroll Speed & Smoothness Optimizer */}

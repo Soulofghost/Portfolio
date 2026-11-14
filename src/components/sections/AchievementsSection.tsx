@@ -7,7 +7,7 @@ import { FaTrophy } from 'react-icons/fa';
 
 export default function AchievementsSection() {
   return (
-    <section className="py-24 relative z-10 overflow-hidden">
+    <section className="py-24 relative z-10 overflow-x-clip">
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div

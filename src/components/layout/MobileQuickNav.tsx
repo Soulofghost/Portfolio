@@ -54,6 +54,17 @@ export default function MobileQuickNav({ onOpenResume, onOpenCommandPalette }: M
     return () => observer.disconnect();
   }, []);
 
+  // Lock body scroll only while mobile slide-up drawer is open, restore on close
+  useEffect(() => {
+    if (isMoreOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isMoreOpen]);
+
   const primaryLinks = [
     { name: 'Home', id: 'home', icon: HiHome },
     { name: 'Projects', id: 'projects', icon: HiViewGrid },

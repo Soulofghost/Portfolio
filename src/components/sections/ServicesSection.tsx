@@ -16,7 +16,7 @@ const ICON_COMPONENTS: Record<string, any> = {
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-24 relative z-10 bg-slate-950/60 overflow-hidden">
+    <section id="services" className="py-24 relative z-10 bg-slate-950/60 overflow-x-clip">
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div

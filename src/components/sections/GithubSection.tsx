@@ -145,7 +145,7 @@ function GithubSection() {
   const hasMore = paginatedRepos.length < filteredRepos.length;
 
   return (
-    <section id="github" className="py-24 relative z-10 bg-slate-950/70 scroll-mt-20 overflow-hidden">
+    <section id="github" className="py-24 relative z-10 bg-slate-950/70 scroll-mt-20 overflow-x-clip">
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div

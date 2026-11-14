@@ -16,7 +16,8 @@
   }
 
   html {
-    /* Native, unhijacked scrolling for mouse wheel and trackpad */
+    /* Native, smooth uninhibited scrolling */
+    scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
     overscroll-behavior-x: none;
     overscroll-behavior-y: auto;
@@ -34,7 +35,6 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
   }
 

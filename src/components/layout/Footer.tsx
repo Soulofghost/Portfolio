@@ -16,7 +16,7 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
   };
 
   return (
-    <footer className="relative z-10 bg-slate-950 border-t border-slate-900 pt-16 pb-28 xl:pb-12 text-slate-400 overflow-hidden">
+    <footer className="relative z-10 bg-slate-950 border-t border-slate-900 pt-16 pb-28 xl:pb-12 text-slate-400 overflow-x-clip">
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-12">
           {/* Brand Col */}

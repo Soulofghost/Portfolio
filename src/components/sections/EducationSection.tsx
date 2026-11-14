@@ -7,7 +7,7 @@ import { HiAcademicCap, HiLocationMarker, HiCheckCircle } from 'react-icons/hi';
 
 export default function EducationSection() {
   return (
-    <section id="education" className="py-24 relative z-10 bg-slate-950/40 overflow-hidden">
+    <section id="education" className="py-24 relative z-10 bg-slate-950/40 overflow-x-clip">
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div

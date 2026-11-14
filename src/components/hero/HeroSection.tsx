@@ -70,7 +70,7 @@ function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
     <section
       id="home"
       onMouseMove={handleHeroMouseMove}
-      className="relative w-full pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden"
+      className="relative w-full pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-x-clip"
     >
       {/* Multi-Layer Live Animated Universe Background */}
       <UniverseBackground activeBox={activeBox} mousePos={mousePos} />

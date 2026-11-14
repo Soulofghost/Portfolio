@@ -24,7 +24,7 @@ export default function LinkedInSection() {
   };
 
   return (
-    <section id="linkedin" className="py-20 relative z-10 scroll-mt-20 overflow-hidden">
+    <section id="linkedin" className="py-20 relative z-10 scroll-mt-20 overflow-x-clip">
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         <motion.div
           variants={fadeIn('up', 0.2)}
