@@ -13,7 +13,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://alvin-ms-portfolio.alvinms394.workers.dev'),
+  metadataBase: new URL('https://portfolio.alvinms.workers.dev'),
   title: 'Alvin MS | Computer Science & AI Student, Java & Full Stack Engineer',
   description:
     'Official engineering portfolio of Alvin MS — Computer Science & Artificial Intelligence student, Java Spring Boot developer, Full Stack engineer, and Founder @ NEXAURON & HELIX based in Trivandrum, Kerala, India. Building intelligent distributed platforms and automated systems.',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Alvin MS | Computer Science & AI Student | Systems Engineer',
     description: 'Building High-Reliability Software, AI Solutions, and Modern Distributed Platforms.',
-    url: 'https://alvin-ms-portfolio.alvinms394.workers.dev',
+    url: 'https://portfolio.alvinms.workers.dev',
     siteName: 'Alvin MS Portfolio',
     images: [
       {
