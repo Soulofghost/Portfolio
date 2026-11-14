@@ -14,7 +14,7 @@ The site brings together selected projects, ventures, technical skills, experien
 - **Production Portfolio:** [https://portfolio.alvinms.workers.dev/](https://portfolio.alvinms.workers.dev/)
 - **GitHub:** [https://github.com/Soulofghost](https://github.com/Soulofghost)
 - **LinkedIn:** [https://www.linkedin.com/in/alvin-ms-b812a836b/](https://www.linkedin.com/in/alvin-ms-b812a836b/)
-- **Email:** [alvinms394@gmail.com](mailto:alvinms394@gmail.com)
+- **Email:** [alvinms493@gmail.com](mailto:alvinms493@gmail.com)
 - **Location:** Trivandrum, Kerala, India
 - **Education:** B.Tech Computer Science & Artificial Intelligence, MBC College of Engineering & Technology (2025–Present)
 
@@ -217,7 +217,7 @@ npm run build
 - **Name:** Alvin MS
 - **Location:** Trivandrum, Kerala, India
 - **Education:** MBC College of Engineering & Technology (2025–Present)
-- **Email:** [alvinms394@gmail.com](mailto:alvinms394@gmail.com)
+- **Email:** [alvinms493@gmail.com](mailto:alvinms493@gmail.com)
 - **Portfolio:** [https://portfolio.alvinms.workers.dev/](https://portfolio.alvinms.workers.dev/)
 - **GitHub:** [https://github.com/Soulofghost](https://github.com/Soulofghost)
 - **LinkedIn:** [https://www.linkedin.com/in/alvin-ms-b812a836b/](https://www.linkedin.com/in/alvin-ms-b812a836b/)
