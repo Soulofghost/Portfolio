@@ -23,6 +23,7 @@ interface InteractiveUniverseBoxesProps {
 
 interface BoxItem {
   id: 'sentrix' | 'nexa' | 'opensource' | 'tech';
+  numberTag: string;
   title: string;
   subtitle: string;
   badge: string;
@@ -33,6 +34,7 @@ interface BoxItem {
   glowColor: string;
   description: string;
   specifications: string[];
+  techStack: string[];
   targetSection: string;
   actionText: string;
 }
@@ -40,48 +42,55 @@ interface BoxItem {
 const BOXES: BoxItem[] = [
   {
     id: 'sentrix',
+    numberTag: '01',
     title: 'SENTRIX',
-    subtitle: 'Civil Defense & SEM Engine',
-    badge: 'SEM Online • PGA Telemetry',
+    subtitle: 'Smart Disaster Response & SEM Platform',
+    badge: 'SEM Hardware • PGA Telemetry',
     badgeStyle: 'bg-amber-950/80 text-amber-300 border-amber-500/40',
     icon: HiLightningBolt,
     accentColor: '#f59e0b',
     borderColor: 'hover:border-amber-500/60 focus-visible:border-amber-500/80',
     glowColor: 'rgba(245, 158, 11, 0.25)',
     description:
-      'Autonomous emergency response engine coordinating real-time seismic peak acceleration (PGA), Haversine geodesic routing, and civil hazard broadcasts.',
+      'Smart disaster response and civic technology platform. Coordinates the Smart Emergency Module (SEM) hardware ecosystem, real-time seismic peak acceleration (PGA), Haversine geodesic routing, and civil hazard broadcasts.',
     specifications: [
+      'Smart Emergency Module (SEM) hardware integration',
       'Peak Ground Acceleration (PGA) seismic engine',
       'Haversine geodesic rescue dispatch algorithms',
       'Real-time WebSocket telemetry coordination',
     ],
+    techStack: ['IoT Hardware', 'Python', 'FastAPI', 'WebSockets', 'PostgreSQL'],
     targetSection: '#projects',
-    actionText: 'Inspect SENTRIX Architecture',
+    actionText: 'Inspect SENTRIX Platform',
   },
   {
     id: 'nexa',
+    numberTag: '02',
     title: 'NexaAPIX',
-    subtitle: 'Distributed API Gateway',
-    badge: 'Token Bucket • <2ms Proxy',
+    subtitle: 'AI API Marketplace & LLM Orchestration',
+    badge: 'LLM Orchestration • <2ms Proxy',
     badgeStyle: 'bg-purple-950/80 text-purple-300 border-purple-500/40',
     icon: HiCube,
     accentColor: '#a855f7',
     borderColor: 'hover:border-purple-500/60 focus-visible:border-purple-500/80',
     glowColor: 'rgba(168, 85, 247, 0.25)',
     description:
-      'High-throughput reverse proxy gateway featuring dynamic rate limiting, token-bucket validation, upstream health verification, and latency telemetry.',
+      'AI API marketplace and LLM orchestration concept. High-throughput reverse proxy gateway featuring distributed token-bucket rate limiting, zero-trust JWT verification, and live latency telemetry.',
     specifications: [
+      'LLM orchestration & model routing gateway',
       'Distributed token-bucket rate limiter engine',
       'Zero-trust JWT verification & header sanitizer',
       'Dynamic reverse proxying with live metrics',
     ],
+    techStack: ['FastAPI', 'Redis', 'Python', 'Docker', 'Next.js'],
     targetSection: '#ventures',
     actionText: 'View NexaAPIX Platform',
   },
   {
     id: 'opensource',
-    title: 'Open Source',
-    subtitle: '50 Repositories Architecture',
+    numberTag: '03',
+    title: 'OPEN SOURCE',
+    subtitle: '50 Dynamically Synced Repositories',
     badge: '50 Repos • Live GitHub Sync',
     badgeStyle: 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40',
     icon: FaGithub,
@@ -89,35 +98,47 @@ const BOXES: BoxItem[] = [
     borderColor: 'hover:border-emerald-500/60 focus-visible:border-emerald-500/80',
     glowColor: 'rgba(16, 185, 129, 0.25)',
     description:
-      "Alvin MS's 50-repository software engineering ecosystem across AI, distributed systems, full-stack SaaS, and cybersecurity. Zero vanity metrics, 100% verified.",
+      "Alvin MS's 50-repository software engineering ecosystem across AI, distributed systems, full-stack SaaS, and cybersecurity. Connected to GitHub profile (@Soulofghost) with automated sync.",
     specifications: [
       '20 Flagships + 30 Advanced Core Repositories',
       '100% verified with automated CI/CD workflows',
-      'Live GitHub API auto-sync with @Soulofghost',
+      'Live GitHub REST API auto-sync with @Soulofghost',
+      'Zero vanity metrics, authentic commit history',
     ],
+    techStack: ['GitHub Actions', 'REST API', 'CI/CD', 'Open Source'],
     targetSection: '#github',
     actionText: 'Explore 50 Repositories',
   },
   {
     id: 'tech',
-    title: 'Tech Matrix',
-    subtitle: 'Core Systems & AI Engineering',
-    badge: 'Java • Python • Next.js',
+    numberTag: '04',
+    title: 'TECHNOLOGY STACK',
+    subtitle: 'Java, Python, React, Next.js, Node, SQL, AI',
+    badge: 'Java • Python • Next.js • AI',
     badgeStyle: 'bg-cyan-950/80 text-cyan-300 border-cyan-500/40',
     icon: HiCode,
     accentColor: '#06b6d4',
     borderColor: 'hover:border-cyan-500/60 focus-visible:border-cyan-500/80',
     glowColor: 'rgba(6, 182, 212, 0.25)',
     description:
-      'High-concurrency enterprise Java Spring Boot backend services, Python AI/ML pipelines, modern Next.js 16 full-stack applications, and containerized Docker runtimes.',
+      'Enterprise Java Spring Boot backend services, Python AI/ML pipelines, React and Next.js 16 full-stack interfaces, Node.js runtimes, SQL databases, and containerized Docker architecture.',
     specifications: [
       'Java Spring Boot & PostgreSQL persistence',
       'Python FastAPI, PyTorch & RAG architecture',
-      'Next.js 16, TypeScript & Tailwind full-stack',
+      'Next.js 16, React, TypeScript & Tailwind CSS',
+      'Docker containerization & Linux systems',
     ],
+    techStack: ['Java', 'Python', 'React', 'Next.js', 'Node.js', 'SQL', 'AI/ML'],
     targetSection: '#skills',
     actionText: 'View Full Technology Stack',
   },
+];
+
+const PROCESS_STEPS = [
+  { step: '01', title: 'IDEA', desc: 'Concept & Architecture Framing' },
+  { step: '02', title: 'ARCHITECTURE', desc: 'System Topology & Database Design' },
+  { step: '03', title: 'DEVELOPMENT', desc: 'High-Throughput Code & AI Pipelines' },
+  { step: '04', title: 'PRODUCT', desc: 'Verified Deployment & Live Telemetry' },
 ];
 
 function InteractiveUniverseBoxes({ activeBox, onHoverBox }: InteractiveUniverseBoxesProps) {
@@ -148,7 +169,76 @@ function InteractiveUniverseBoxes({ activeBox, onHoverBox }: InteractiveUniverse
 
   return (
     <div className="w-full mt-10 lg:mt-12 relative z-20">
-      {/* Constellation Header Bar */}
+      
+      {/* =========================================================================
+          ENGINEERING PROCESS PIPELINE: IDEA → ARCHITECTURE → DEVELOPMENT → PRODUCT
+          ========================================================================= */}
+      <div className="mb-6 rounded-2xl bg-[#090d16]/90 border border-slate-800/90 p-3 sm:p-4 shadow-xl backdrop-blur-md">
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3 px-1 border-b border-slate-800/80 pb-2">
+          <div className="flex items-center gap-2 text-[11px] font-mono text-slate-300">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            <span className="text-white font-bold uppercase tracking-wider">
+              Engineering Lifecycle
+            </span>
+            <span className="text-slate-500 hidden sm:inline">—</span>
+            <span className="text-slate-400 text-[10px] hidden sm:inline">
+              Continuous End-to-End Execution Pipeline
+            </span>
+          </div>
+
+          <div className="text-[9px] font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>PIPELINE ACTIVE</span>
+          </div>
+        </div>
+
+        {/* 4 Process Pipeline Nodes with Animated SVG Circuit Connector */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 relative">
+          {PROCESS_STEPS.map((step, idx) => (
+            <div
+              key={step.title}
+              className="relative rounded-xl p-2.5 sm:p-3 bg-slate-950/70 border border-slate-800 hover:border-emerald-500/40 transition-all duration-300 group"
+            >
+              <div className="flex items-center justify-between gap-1 mb-1">
+                <span className="text-[10px] font-mono font-bold text-slate-500 group-hover:text-emerald-400 transition-colors">
+                  PHASE {step.step}
+                </span>
+                {idx < 3 ? (
+                  <span className="text-[10px] font-mono text-slate-600 group-hover:text-cyan-400 transition-colors hidden md:inline">
+                    →
+                  </span>
+                ) : (
+                  <span className="text-[9px] font-mono text-emerald-400 uppercase tracking-wider font-semibold">
+                    DEPLOYED
+                  </span>
+                )}
+              </div>
+
+              <div className="text-xs sm:text-sm font-extrabold text-white tracking-wide group-hover:text-emerald-300 transition-colors">
+                {step.title}
+              </div>
+              <div className="text-[10px] font-mono text-slate-400 mt-0.5 truncate leading-tight">
+                {step.desc}
+              </div>
+
+              {/* Subtle Bottom Accent Indicator */}
+              <div className="w-full h-0.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-emerald-500 to-cyan-500 transition-all duration-500 group-hover:w-full"
+                  style={{ width: `${(idx + 1) * 25}%` }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* =========================================================================
+          CONSTELLATION HEADER BAR: 4 COORDINATED PROJECT NODES
+          ========================================================================= */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4 px-1">
         <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
           <span className="flex h-2 w-2 relative">
@@ -169,7 +259,9 @@ function InteractiveUniverseBoxes({ activeBox, onHoverBox }: InteractiveUniverse
         </div>
       </div>
 
-      {/* 4 Interactive Project Boxes Grid */}
+      {/* =========================================================================
+          4 MULTI-EFFECT INTERACTIVE PROJECT BOXES GRID
+          ========================================================================= */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3.5 sm:gap-4">
         {BOXES.map((box) => {
           const IconComp = box.icon;
@@ -218,7 +310,7 @@ function InteractiveUniverseBoxes({ activeBox, onHoverBox }: InteractiveUniverse
                 }}
               />
 
-              {/* Card Header: Node Status, Icon & Title */}
+              {/* Card Header: Node Number Tag, Icon & Title */}
               <div className="relative z-10 flex flex-wrap items-start justify-between gap-2 mb-2.5">
                 <div className="flex items-center gap-2 min-w-0 max-w-[calc(100%-80px)]">
                   <div
@@ -232,13 +324,18 @@ function InteractiveUniverseBoxes({ activeBox, onHoverBox }: InteractiveUniverse
                     <IconComp />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="font-extrabold text-white text-sm sm:text-base tracking-wide flex items-center gap-1.5 truncate">
-                      <span className="truncate">{box.title}</span>
-                      <span
-                        className="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0"
-                        style={{ backgroundColor: box.accentColor }}
-                      />
-                    </h3>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[10px] font-mono text-slate-500 font-bold">
+                        {box.numberTag}
+                      </span>
+                      <h3 className="font-extrabold text-white text-sm sm:text-base tracking-wide flex items-center gap-1.5 truncate">
+                        <span className="truncate">{box.title}</span>
+                        <span
+                          className="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0"
+                          style={{ backgroundColor: box.accentColor }}
+                        />
+                      </h3>
+                    </div>
                     <p className="text-[10px] font-mono text-slate-400 truncate">
                       {box.subtitle}
                     </p>
@@ -256,6 +353,18 @@ function InteractiveUniverseBoxes({ activeBox, onHoverBox }: InteractiveUniverse
               <p className="relative z-10 text-slate-300 text-xs line-clamp-2 leading-relaxed mb-3">
                 {box.description}
               </p>
+
+              {/* Relevant Technologies Pill Row */}
+              <div className="relative z-10 flex flex-wrap gap-1 mb-3">
+                {box.techStack.slice(0, 3).map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-900/90 text-slate-300 border border-slate-800"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
 
               {/* Footer Interaction Hint */}
               <div className="relative z-10 flex items-center justify-between pt-2 border-t border-slate-800/80 text-[10px] font-mono">
@@ -326,4 +435,3 @@ function InteractiveUniverseBoxes({ activeBox, onHoverBox }: InteractiveUniverse
 }
 
 export default memo(InteractiveUniverseBoxes);
-

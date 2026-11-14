@@ -75,6 +75,29 @@ function GithubSection() {
     return Array.from(set).sort();
   }, [stats]);
 
+  // Aggregate stats across all retrieved repositories
+  const aggregateMetrics = useMemo(() => {
+    if (!stats?.repos) {
+      return {
+        totalStars: 0,
+        totalForks: 0,
+        originalCount: 0,
+        forkedCount: 0,
+      };
+    }
+    const totalStars = stats.repos.reduce((acc, r) => acc + (r.stargazers_count || 0), 0);
+    const totalForks = stats.repos.reduce((acc, r) => acc + (r.forks_count || 0), 0);
+    const forkedCount = stats.repos.filter((r) => r.is_fork).length;
+    const originalCount = stats.repos.length - forkedCount;
+
+    return {
+      totalStars,
+      totalForks,
+      originalCount,
+      forkedCount,
+    };
+  }, [stats]);
+
   // Filtered and sorted repositories
   const filteredRepos = useMemo(() => {
     if (!stats?.repos) return [];
@@ -147,56 +170,76 @@ function GithubSection() {
 
         {/* Live GitHub Stats Metrics Bar */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-12">
-          <div className="p-4 sm:p-6 rounded-2xl glass-card border border-purple-500/30 flex items-center gap-4">
-            <div className="p-3.5 rounded-2xl bg-purple-900/40 text-purple-400 text-2xl border border-purple-500/30">
+          {/* Repositories Breakdown */}
+          <div className="p-4 sm:p-5 rounded-2xl glass-card border border-purple-500/30 flex items-center gap-4">
+            <div className="p-3.5 rounded-2xl bg-purple-900/40 text-purple-400 text-2xl border border-purple-500/30 flex-shrink-0">
               <FaBook />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="text-2xl sm:text-3xl font-black text-white">
-                {loading ? '...' : stats?.publicRepos || stats?.repos.length || 42}
+                {loading ? '...' : stats?.publicRepos || stats?.repos.length || 50}
               </div>
-              <div className="text-xs font-mono text-slate-400">Public Repositories</div>
+              <div className="text-xs font-mono text-slate-300 font-semibold">Public Repositories</div>
+              <div className="text-[10px] font-mono text-slate-400 mt-0.5">
+                {aggregateMetrics.originalCount} Original • {aggregateMetrics.forkedCount} Forked
+              </div>
             </div>
           </div>
 
-          <div className="p-4 sm:p-6 rounded-2xl glass-card border border-cyan-500/30 flex items-center gap-4">
-            <div className="p-3.5 rounded-2xl bg-cyan-900/40 text-cyan-400 text-2xl border border-cyan-500/30">
+          {/* Stars & Forks */}
+          <div className="p-4 sm:p-5 rounded-2xl glass-card border border-amber-500/30 flex items-center gap-4">
+            <div className="p-3.5 rounded-2xl bg-amber-900/40 text-amber-400 text-2xl border border-amber-500/30 flex-shrink-0">
+              <FaStar />
+            </div>
+            <div className="min-w-0">
+              <div className="text-2xl sm:text-3xl font-black text-white flex items-center gap-2">
+                <span>{loading ? '...' : aggregateMetrics.totalStars}</span>
+                <span className="text-xs font-normal font-mono text-amber-400">Stars</span>
+              </div>
+              <div className="text-xs font-mono text-slate-300 font-semibold">Community Impact</div>
+              <div className="text-[10px] font-mono text-cyan-400 mt-0.5 flex items-center gap-1">
+                <FaCodeBranch className="text-[10px]" />
+                <span>{aggregateMetrics.totalForks} Total Forks Across Repos</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Developer Network: Followers & Following */}
+          <div className="p-4 sm:p-5 rounded-2xl glass-card border border-cyan-500/30 flex items-center gap-4">
+            <div className="p-3.5 rounded-2xl bg-cyan-900/40 text-cyan-400 text-2xl border border-cyan-500/30 flex-shrink-0">
               <HiCode />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="text-2xl sm:text-3xl font-black text-white">
-                {loading ? '...' : availableLanguages.length || '8+'}
+                {loading ? '...' : stats?.followers || 0}
               </div>
-              <div className="text-xs font-mono text-slate-400">Languages Used</div>
+              <div className="text-xs font-mono text-slate-300 font-semibold">GitHub Followers</div>
+              <div className="text-[10px] font-mono text-slate-400 mt-0.5">
+                {availableLanguages.length} Languages • {stats?.following || 0} Following
+              </div>
             </div>
           </div>
 
-          <div className="p-4 sm:p-6 rounded-2xl glass-card border border-pink-500/30 flex items-center gap-4">
-            <div className="p-3.5 rounded-2xl bg-pink-900/40 text-pink-400 text-2xl border border-pink-500/30">
-              <HiSparkles />
-            </div>
-            <div>
-              <div className="text-2xl sm:text-3xl font-black text-white">
-                {loading ? '...' : stats?.cachedAt ? 'Cached (1h)' : 'Live API'}
-              </div>
-              <div className="text-xs font-mono text-slate-400">Sync Status</div>
-            </div>
-          </div>
-
-          <div className="p-4 sm:p-6 rounded-2xl glass-card border border-emerald-500/30 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-3.5 rounded-2xl bg-emerald-900/40 text-emerald-400 text-2xl border border-emerald-500/30">
+          {/* Official Profile & Live Sync Status */}
+          <div className="p-4 sm:p-5 rounded-2xl glass-card border border-emerald-500/30 flex items-center justify-between">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="p-3.5 rounded-2xl bg-emerald-900/40 text-emerald-400 text-2xl border border-emerald-500/30 flex-shrink-0">
                 <FaGithub />
               </div>
-              <div>
-                <div className="text-sm font-bold text-white">@Soulofghost</div>
-                <div className="text-xs font-mono text-slate-400">Official Profile</div>
+              <div className="min-w-0">
+                <div className="text-sm font-bold text-white truncate">@Soulofghost</div>
+                <div className="text-[11px] font-mono text-emerald-400 font-semibold">
+                  {stats?.cachedAt ? 'Synced (Cached 1h)' : 'Live REST API'}
+                </div>
+                <div className="text-[9px] font-mono text-slate-500 truncate">
+                  {stats?.cachedAt ? new Date(stats.cachedAt).toLocaleTimeString() : 'Verified Active'}
+                </div>
               </div>
             </div>
             <button
               onClick={() => loadStats(true)}
               disabled={refreshing || loading}
-              className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-colors"
+              className="p-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-colors flex-shrink-0"
               title="Force Refresh GitHub Data"
               aria-label="Refresh GitHub Repositories"
             >
@@ -319,6 +362,16 @@ function GithubSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {paginatedRepos.map((repo) => {
               const langColor = repo.language ? LANGUAGE_COLORS[repo.language] || '#818cf8' : '#64748b';
+              const isPriorityFeatured =
+                repo.name.toLowerCase().includes('sentrix') ||
+                repo.name.toLowerCase().includes('nexa') ||
+                repo.name.toLowerCase().includes('civix') ||
+                repo.name.toLowerCase().includes('helix');
+              const formattedDate = new Date(repo.updated_at).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+              });
               const cleanDescription =
                 repo.description ||
                 `Production repository by Alvin MS (@Soulofghost) featuring ${repo.language || 'software'} implementation.`;
@@ -326,14 +379,14 @@ function GithubSection() {
               return (
                 <div
                   key={repo.id}
-                  className="glass-card glass-card-hover rounded-2xl p-4 sm:p-6 border border-slate-800 hover:border-purple-500/50 flex flex-col justify-between transition-all duration-300"
+                  className="box-light-sweep glass-card glass-card-hover rounded-2xl p-4 sm:p-6 border border-slate-800 hover:border-purple-500/50 flex flex-col justify-between transition-all duration-300 group"
                 >
                   <div>
-                    {/* Header: Name & Language */}
-                    <div className="flex items-start justify-between gap-2 mb-3">
+                    {/* Header: Name & Priority / Language */}
+                    <div className="flex items-start justify-between gap-2 mb-2.5">
                       <div className="flex items-center gap-2 font-bold text-white text-sm max-w-[210px] truncate">
                         <FaBook className="text-purple-400 text-xs flex-shrink-0" />
-                        <span className="truncate" title={repo.name}>
+                        <span className="truncate group-hover:text-purple-300 transition-colors" title={repo.name}>
                           {repo.name}
                         </span>
                       </div>
@@ -346,11 +399,17 @@ function GithubSection() {
                       )}
                     </div>
 
-                    {/* Category Pill */}
-                    <div className="mb-3">
+                    {/* Category & Priority Badge */}
+                    <div className="flex items-center gap-1.5 mb-3">
                       <span className="text-[9px] font-mono uppercase px-2 py-0.5 rounded bg-slate-900/80 text-cyan-400 border border-slate-800">
                         {repo.category}
                       </span>
+                      {isPriorityFeatured && (
+                        <span className="text-[9px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          <span>Featured Architecture</span>
+                        </span>
+                      )}
                     </div>
 
                     {/* Description */}
@@ -360,7 +419,7 @@ function GithubSection() {
 
                     {/* Topics / Tags */}
                     {repo.topics && repo.topics.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mb-4">
+                      <div className="flex flex-wrap gap-1 mb-3">
                         {repo.topics.slice(0, 3).map((topic) => (
                           <span
                             key={topic}
@@ -373,20 +432,28 @@ function GithubSection() {
                     )}
                   </div>
 
+                  {/* Metadata Row: Update Date */}
+                  <div className="text-[10px] font-mono text-slate-500 mb-3 flex items-center justify-between">
+                    <span>Updated {formattedDate}</span>
+                    {repo.is_fork && (
+                      <span className="text-slate-500">Forked Repository</span>
+                    )}
+                  </div>
+
                   {/* Footer & Actions */}
-                  <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400">
+                  <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400">
                     <div className="flex items-center gap-3">
-                      <span className="flex items-center gap-1">
+                      <span className="flex items-center gap-1" title="Stars">
                         <FaStar className="text-amber-400 text-xs" />
                         <span>{repo.stargazers_count}</span>
                       </span>
-                      <span className="flex items-center gap-1">
+                      <span className="flex items-center gap-1" title="Forks">
                         <FaCodeBranch className="text-cyan-400 text-xs" />
                         <span>{repo.forks_count}</span>
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
                       <button
                         onClick={() =>
                           setActiveShareProject({
@@ -405,11 +472,24 @@ function GithubSection() {
                         <FaLinkedin className="text-xs" />
                       </button>
 
+                      {repo.homepage && (
+                        <a
+                          href={repo.homepage}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2 py-1 rounded-lg bg-emerald-950/70 hover:bg-emerald-900/90 text-emerald-400 hover:text-white border border-emerald-500/30 flex items-center gap-1 transition-colors text-[11px]"
+                          title="View Live Deployment"
+                        >
+                          <span>Live</span>
+                          <HiExternalLink className="text-[10px]" />
+                        </a>
+                      )}
+
                       <a
                         href={repo.html_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-purple-400 hover:text-cyan-300 border border-slate-800 flex items-center gap-1 transition-colors"
+                        className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-purple-400 hover:text-cyan-300 border border-slate-800 flex items-center gap-1 transition-colors text-[11px]"
                       >
                         <span>Code</span>
                         <HiExternalLink className="text-xs" />

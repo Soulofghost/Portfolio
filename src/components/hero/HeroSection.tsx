@@ -94,7 +94,9 @@ function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
               </span>
               <span className="text-white font-semibold tracking-wider uppercase">ALVIN MS</span>
               <span className="text-slate-500">—</span>
-              <span className="text-emerald-400 font-medium">Software / AI / Ventures</span>
+              <span className="text-emerald-400 font-medium">SOFTWARE / AI / VENTURES</span>
+              <span className="text-slate-500 hidden sm:inline">•</span>
+              <span className="text-cyan-400 font-medium hidden sm:inline">BUILDING DIGITAL SYSTEMS</span>
             </motion.div>
 
             {/* Editorial Main Headline */}

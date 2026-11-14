@@ -91,7 +91,7 @@ function ProjectsSection() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className={`group glass-card glass-card-hover rounded-2xl border transition-all duration-300 overflow-hidden flex flex-col justify-between ${
+                className={`group box-light-sweep glass-card glass-card-hover rounded-2xl border transition-all duration-300 overflow-hidden flex flex-col justify-between ${
                   isSentrix
                     ? 'border-cyan-500/60 shadow-2xl shadow-cyan-950/60 hover:border-cyan-400'
                     : project.isFlagship

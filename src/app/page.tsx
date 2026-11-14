@@ -25,7 +25,8 @@ const TestimonialsSection = dynamic(() => import('@/components/sections/Testimon
 const BlogSection = dynamic(() => import('@/components/sections/BlogSection'), { ssr: true });
 
 // Code-split interactive tools, modals & background canvas
-const ParticlesContainer = dynamic(() => import('@/components/hero/ParticlesContainer'), { ssr: false });
+const DigitalDimensionBackground = dynamic(() => import('@/components/layout/DigitalDimensionBackground'), { ssr: false });
+const CustomCursor = dynamic(() => import('@/components/layout/CustomCursor'), { ssr: false });
 const AIChatbot = dynamic(() => import('@/components/interactive/AIChatbot'), { ssr: false });
 const ResumeModal = dynamic(() => import('@/components/interactive/ResumeModal'), { ssr: false });
 const CommandPalette = dynamic(() => import('@/components/layout/CommandPalette'), { ssr: false });
@@ -82,8 +83,11 @@ function Home() {
       {/* Page Entry Transition Curtains (auto-unmounts after 700ms) */}
       <Transition />
 
-      {/* Lightweight Ambient Particles Canvas */}
-      <ParticlesContainer />
+      {/* Global Interactive Desktop Cursor (Auto-disabled on touch & coarse pointers) */}
+      <CustomCursor />
+
+      {/* Global Live 3D Background: ALVIN — DIGITAL DIMENSION (Persistent WebGL & Section-Aware) */}
+      <DigitalDimensionBackground />
 
       {/* Fixed Header */}
       <Header

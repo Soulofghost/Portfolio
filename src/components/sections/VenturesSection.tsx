@@ -86,7 +86,7 @@ function VenturesSection() {
               viewport={{ once: true }}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.4 }}
-              className="glass-card rounded-3xl p-5 sm:p-8 lg:p-10 border border-purple-500/30 hover:border-cyan-400/60 shadow-2xl shadow-purple-950/40 relative overflow-hidden flex flex-col justify-between group"
+              className="box-light-sweep glass-card rounded-3xl p-5 sm:p-8 lg:p-10 border border-purple-500/30 hover:border-cyan-400/60 shadow-2xl shadow-purple-950/40 relative overflow-hidden flex flex-col justify-between group"
             >
               {/* Corner Glow Blob */}
               <div className="absolute top-0 right-0 w-36 sm:w-48 h-36 sm:h-48 rounded-full bg-gradient-to-br from-purple-600/30 to-cyan-500/30 blur-2xl group-hover:opacity-100 transition-opacity opacity-50 pointer-events-none" />
