@@ -11,7 +11,7 @@ A personal portfolio for **Alvin MS**, a Computer Science and Artificial Intelli
 
 The site brings together selected projects, ventures, technical skills, experience, GitHub activity and professional contact links in one place.
 
-- **Production Portfolio:** [https://alvin-ms-portfolio.alvinms394.workers.dev](https://alvin-ms-portfolio.alvinms394.workers.dev)
+- **Production Portfolio:** [https://portfolio.alvinms.workers.dev/](https://portfolio.alvinms.workers.dev/)
 - **GitHub:** [https://github.com/Soulofghost](https://github.com/Soulofghost)
 - **LinkedIn:** [https://www.linkedin.com/in/alvin-ms-b812a836b/](https://www.linkedin.com/in/alvin-ms-b812a836b/)
 - **Email:** [alvinms394@gmail.com](mailto:alvinms394@gmail.com)
