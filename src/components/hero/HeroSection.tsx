@@ -229,7 +229,7 @@ function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
                   </div>
                   <div className="flex items-center gap-1 text-slate-400">
                     <HiLocationMarker className="text-slate-500 text-xs" />
-                    <span>KERALA, INDIA</span>
+                    <span>TRIVANDRUM, KERALA</span>
                   </div>
                 </div>
 
@@ -250,7 +250,7 @@ function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
                   <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-lg bg-[#080c14]/85 backdrop-blur-md border border-white/10 flex items-center justify-between text-xs font-mono">
                     <div>
                       <div className="text-white font-bold leading-none">Alvin MS</div>
-                      <div className="text-[10px] text-slate-400 mt-1">CS & AI Student • MBCCET</div>
+                      <div className="text-[10px] text-slate-400 mt-1">CS & AI Student • MBCCET (2025–Present)</div>
                     </div>
                     <div className="text-right">
                       <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-500/30 font-semibold">
@@ -274,7 +274,7 @@ function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
                     </div>
                     <div className="p-2 rounded-lg bg-slate-900/50 border border-slate-800/80">
                       <span className="text-slate-500 block text-[9px] uppercase tracking-wider">Portfolio</span>
-                      <span className="text-cyan-400 font-semibold">50 Repos Architecture</span>
+                      <span className="text-cyan-400 font-semibold">Open Source Ecosystem</span>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { PERSONAL_INFO, PROJECTS, SKILL_CATEGORIES } from '@/data/portfolioData';
+import { PERSONAL_INFO, PROJECTS, SKILL_CATEGORIES, EDUCATION } from '@/data/portfolioData';
 import { HiX, HiDownload, HiPrinter, HiCheckCircle } from 'react-icons/hi';
 
 interface ResumeModalProps {
@@ -55,10 +55,10 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               <h4 className="text-sm font-mono uppercase font-bold text-purple-400 mb-2 border-b border-slate-800 pb-1">Education</h4>
               <div>
                 <div className="flex justify-between font-bold text-white text-sm">
-                  <span>Bachelor of Technology (B.Tech) - Computer Science & AI</span>
-                  <span className="font-mono text-cyan-400">2023 - 2027</span>
+                  <span>{EDUCATION[0]?.degree || 'Bachelor of Technology (B.Tech) - Computer Science & AI'}</span>
+                  <span className="font-mono text-cyan-400">{EDUCATION[0]?.period || '2025–Present'}</span>
                 </div>
-                <div className="text-slate-400 mb-2">Mar Baselios Christian College of Engineering & Technology, Peermade</div>
+                <div className="text-slate-400 mb-2">{EDUCATION[0]?.institution || 'MBC College of Engineering & Technology'}, {EDUCATION[0]?.location || 'Trivandrum, Kerala, India'}</div>
               </div>
             </section>
 

@@ -15,9 +15,9 @@ export default function LinkedInSection() {
     setActiveShare({
       title: 'Alvin MS — Production Engineering Portfolio',
       description:
-        'Explore Alvin MS\'s software portfolio featuring 50 production-grade repositories across AI, Distributed Systems, Full-Stack SaaS, and Cybersecurity.',
+        'Explore Alvin MS\'s software portfolio featuring an extensive ecosystem of repositories across AI, Distributed Systems, Full-Stack SaaS, and Cybersecurity.',
       githubUrl: PERSONAL_INFO.githubUrl,
-      liveUrl: 'https://alvinms.vercel.app',
+      liveUrl: 'https://alvin-ms-portfolio.alvinms394.workers.dev',
       techStack: ['Java', 'Spring Boot', 'Next.js', 'FastAPI', 'Solidity', 'Docker'],
       category: 'Software Engineering',
     });

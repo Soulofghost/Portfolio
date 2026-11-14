@@ -13,10 +13,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://alvinms.vercel.app'),
+  metadataBase: new URL('https://alvin-ms-portfolio.alvinms394.workers.dev'),
   title: 'Alvin MS | Computer Science & AI Student, Java & Full Stack Engineer',
   description:
-    'Official engineering portfolio of Alvin MS — Computer Science & Artificial Intelligence student, Java Spring Boot developer, Full Stack engineer, and Founder @ NEXAURON & HELIX based in Kerala, India. Building intelligent distributed platforms and automated systems.',
+    'Official engineering portfolio of Alvin MS — Computer Science & Artificial Intelligence student, Java Spring Boot developer, Full Stack engineer, and Founder @ NEXAURON & HELIX based in Trivandrum, Kerala, India. Building intelligent distributed platforms and automated systems.',
   keywords: [
     'Alvin MS',
     'Alvin MS Portfolio',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     'Spring Boot Developer',
     'Full Stack Developer',
     'SENTRIX Platform',
-    'Kerala Developer',
+    'Trivandrum Kerala Developer',
     'Next.js Portfolio',
     'Soulofghost'
   ],
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Alvin MS | Computer Science & AI Student | Systems Engineer',
     description: 'Building High-Reliability Software, AI Solutions, and Modern Distributed Platforms.',
-    url: 'https://alvinms.vercel.app',
+    url: 'https://alvin-ms-portfolio.alvinms394.workers.dev',
     siteName: 'Alvin MS Portfolio',
     images: [
       {

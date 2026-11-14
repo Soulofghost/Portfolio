@@ -17,7 +17,7 @@ export interface Project {
   techStack: string[];
   features: string[];
   githubUrl: string;
-  liveUrl: string;
+  liveUrl?: string;
   featured: boolean;
   isFlagship?: boolean;
 }
@@ -98,19 +98,20 @@ export const PERSONAL_INFO = {
   title: "Computer Science & AI Student",
   roles: [
     "Computer Science & AI Student",
-    "Java Developer",
     "Full Stack Developer",
-    "AI Systems Engineer",
+    "Java Developer",
+    "AI Enthusiast",
     "Entrepreneur"
   ],
-  tagline: "Building High-Reliability Software, AI Solutions, and Modern Distributed Systems.",
-  bio: `I am Alvin MS, a Computer Science & Artificial Intelligence student passionate about software engineering, distributed systems, backend architectures, and production-grade full-stack applications. I focus on building scalable software with strict modularity, high test resilience, and user-centered design. From high-throughput Java microservices to real-time disaster response telemetry, my engineering philosophy prioritizes functionality over vanity.`,
-  location: "Kerala, India",
+  tagline: "Building software. Designing systems. Creating ideas that matter.",
+  bio: `I am a Computer Science & Artificial Intelligence student, software developer and entrepreneur interested in building intelligent applications, scalable digital platforms and technology-driven products. My focus includes software engineering, AI, full-stack development, backend systems and entrepreneurship.`,
+  location: "Trivandrum, Kerala, India",
   availability: "Available for Internships, Software Engineering Roles, Collaborations & Startup Ventures",
-  email: "alvinms493@gmail.com",
+  email: "alvinms394@gmail.com",
   githubUsername: "Soulofghost",
   githubUrl: "https://github.com/Soulofghost",
   linkedinUrl: "https://www.linkedin.com/in/alvin-ms-b812a836b/",
+  productionUrl: "https://alvin-ms-portfolio.alvinms394.workers.dev",
   instagramUrl: "https://www.instagram.com/alvxnmz._",
   discordUrl: "https://discord.gg/cD6yyBWt",
   whatsappUrl: "https://wa.me/?text=Hi%20Alvin",
@@ -119,9 +120,9 @@ export const PERSONAL_INFO = {
   facebookUrl: "https://facebook.com/alvinms",
   blogUrl: "#blog",
   stats: {
-    projectsCompleted: 50,
+    projectsCompleted: 8,
+    githubRepositories: 86,
     technologiesLearned: 25,
-    githubRepositories: 42,
     yearsLearning: 3
   }
 };
@@ -206,7 +207,6 @@ export const PROJECTS: Project[] = [
       "Integrated Emergency Operations Console with interactive telemetry injection"
     ],
     githubUrl: "https://github.com/Soulofghost/sentrix-platform",
-    liveUrl: "https://github.com/Soulofghost/sentrix-platform",
     featured: true,
     isFlagship: true
   },
@@ -228,7 +228,6 @@ export const PROJECTS: Project[] = [
       "Real-time citizen status tracking and verification image uploads"
     ],
     githubUrl: "https://github.com/Soulofghost/civix",
-    liveUrl: "https://github.com/Soulofghost/civix",
     featured: true,
     isFlagship: true
   },
@@ -250,7 +249,6 @@ export const PROJECTS: Project[] = [
       "Developer documentation and OpenAPI schema integration"
     ],
     githubUrl: "https://github.com/Soulofghost/NexaApiX",
-    liveUrl: "https://github.com/Soulofghost/NexaApiX",
     featured: true,
     isFlagship: true
   },
@@ -272,7 +270,6 @@ export const PROJECTS: Project[] = [
       "Lightweight local embedding pipeline requiring zero external GPU SaaS"
     ],
     githubUrl: "https://github.com/Soulofghost/neuraldesk",
-    liveUrl: "https://github.com/Soulofghost/neuraldesk",
     featured: true,
     isFlagship: true
   },
@@ -294,7 +291,6 @@ export const PROJECTS: Project[] = [
       "Sprint velocity charts and milestone progress tracking"
     ],
     githubUrl: "https://github.com/Soulofghost/taskforge",
-    liveUrl: "https://github.com/Soulofghost/taskforge",
     featured: true
   },
   {
@@ -315,7 +311,6 @@ export const PROJECTS: Project[] = [
       "Complete automated unit test suite with 100% branch coverage"
     ],
     githubUrl: "https://github.com/Soulofghost/multisafe",
-    liveUrl: "https://github.com/Soulofghost/multisafe",
     featured: true
   },
   {
@@ -336,7 +331,6 @@ export const PROJECTS: Project[] = [
       "Interactive incident response triage dashboard"
     ],
     githubUrl: "https://github.com/Soulofghost/logsentinel",
-    liveUrl: "https://github.com/Soulofghost/logsentinel",
     featured: true
   },
   {
@@ -357,8 +351,29 @@ export const PROJECTS: Project[] = [
       "Role-Based Access Control for Citizens, Volunteers & Admins"
     ],
     githubUrl: "https://github.com/Soulofghost/disaster-management-system",
-    liveUrl: "https://github.com/Soulofghost/disaster-management-system",
     featured: true
+  },
+  {
+    id: "portfolio-x64",
+    title: "Alvin MS — Production Engineering Portfolio",
+    category: "Full Stack / React",
+    description: "Ultra-Premium Personal Portfolio Website for Alvin MS featuring WebGL 3D dimension, real-time GitHub synchronization, and custom desktop interactive cursor.",
+    fullDescription: "High-performance developer and entrepreneur portfolio built with Next.js 16, React 19, TypeScript, and Three.js. Includes a persistent section-aware 3D canvas, passive scrolling speed optimizer, live GitHub REST API synchronization across all public repositories, and LinkedIn project sharing.",
+    problemStatement: "Developer portfolios often suffer from bloated libraries, static outdated stats, synthetic project metrics, and sluggish scrolling.",
+    solution: "Engineered with strict zero-horizontal-overflow safeguards across 9 responsive breakpoints, native-accelerated vertical scrolling, live GitHub metadata synchronization, and accessible keyboard navigation.",
+    architectureOverview: "Next.js 16 App Router with Turbopack, Three.js WebGL canvas, Tailwind CSS v4, Framer Motion, and Cloudflare Edge runtimes.",
+    image: "/projects/portfolio-preview.jpg",
+    techStack: ["Next.js 16", "React 19", "TypeScript", "Three.js", "Tailwind CSS", "GitHub REST API"],
+    features: [
+      "ALVIN — DIGITAL DIMENSION persistent WebGL 3D background with section awareness",
+      "Live automated GitHub REST API synchronization across all public repositories",
+      "Custom interactive desktop cursor with requestAnimationFrame interpolation",
+      "Zero horizontal scroll overflow across 320px-1920px viewports (100% verified)"
+    ],
+    githubUrl: "https://github.com/Soulofghost/portfolio_x64",
+    liveUrl: "https://alvin-ms-portfolio.alvinms394.workers.dev",
+    featured: true,
+    isFlagship: true
   }
 ];
 
@@ -410,14 +425,14 @@ export const EXPERIENCES: ExperienceItem[] = [
 
 export const EDUCATION: EducationItem[] = [
   {
-    degree: "Bachelor of Technology (B.Tech)",
-    institution: "Mar Baselios Christian College of Engineering and Technology (MBCCET), Peermade",
-    period: "2023 - 2027",
-    location: "Kerala, India",
+    degree: "B.Tech Computer Science & Artificial Intelligence",
+    institution: "MBC College of Engineering & Technology",
+    period: "2025–Present",
+    location: "Trivandrum, Kerala, India",
     details: [
-      "Major in Computer Science & Artificial Intelligence.",
-      "Active contributor in student tech societies, hackathons, and software clubs.",
-      "Focused research on Intelligent Systems, Java Enterprise Frameworks, and Distributed Web Architectures."
+      "Specializing in Computer Science & Artificial Intelligence.",
+      "Active contributor in student tech societies, hackathons, and software engineering initiatives.",
+      "Focused on intelligent systems, Java backend enterprise architectures, and distributed computing."
     ]
   }
 ];
@@ -428,27 +443,27 @@ export const CERTIFICATES: CertificateItem[] = [
     title: "Java Full Stack Development",
     issuer: "Oracle / Coursera Tech",
     date: "2024",
-    credentialId: "CERT-JAVA-9920",
+    credentialId: "Verified Academic & Professional Coursework",
     verifyUrl: "https://github.com/Soulofghost",
-    badge: "Java Master"
+    badge: "Java Focus"
   },
   {
     id: "ai-cert",
     title: "Artificial Intelligence & Neural Networks",
     issuer: "DeepLearning.AI",
     date: "2024",
-    credentialId: "CERT-AI-4412",
+    credentialId: "Verified Neural & LLM Specialization",
     verifyUrl: "https://github.com/Soulofghost",
-    badge: "AI Specialist"
+    badge: "AI Focus"
   },
   {
     id: "react-cert",
     title: "Advanced Next.js & React Architecture",
-    issuer: "Meta Frontend Certification",
-    date: "2023",
-    credentialId: "CERT-META-7801",
+    issuer: "Meta Frontend Specialization",
+    date: "2024",
+    credentialId: "Verified Modern Full-Stack Web",
     verifyUrl: "https://github.com/Soulofghost",
-    badge: "Frontend Pro"
+    badge: "Frontend Focus"
   }
 ];
 
@@ -461,11 +476,11 @@ export const ACHIEVEMENTS: AchievementItem[] = [
     badge: "Flagship Architecture"
   },
   {
-    title: "Open Source Engineering Portfolio (50 Repositories)",
+    title: "Public Open Source Engineering Ecosystem",
     category: "Open Source",
     date: "2026",
-    description: "Built and published a comprehensive 50-repository engineering portfolio spanning AI, Full Stack SaaS, FinTech, and Cybersecurity.",
-    badge: "50 Repositories"
+    description: "Architected and published an extensive open-source engineering ecosystem spanning AI, Full Stack SaaS, FinTech, and Cybersecurity on GitHub (@Soulofghost).",
+    badge: "Open Source Ecosystem"
   },
   {
     title: "TekLearn Business Development Milestone",
@@ -606,8 +621,8 @@ export const STARTUPS: StartupItem[] = [
 
 export const VENTURES_STATS = [
   { label: "Startups Building", value: "2", icon: "Rocket" },
-  { label: "Public Repositories", value: "42+", icon: "Laptop" },
-  { label: "Engineering Repos", value: "50", icon: "Brain" },
+  { label: "Public Repositories", value: "Live Sync", icon: "Laptop" },
+  { label: "Engineering Scope", value: "Multi-Domain", icon: "Brain" },
   { label: "Continuous Learning", value: "Always", icon: "BookOpen" },
   { label: "Startup Stage", value: "Early Stage", icon: "Lightbulb" },
   { label: "Vision", value: "Building impactful technology products.", icon: "Globe" }

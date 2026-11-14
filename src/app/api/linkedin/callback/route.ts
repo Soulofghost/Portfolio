@@ -1,20 +1,37 @@
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const code = searchParams.get('code');
   const error = searchParams.get('error');
+  const state = searchParams.get('state');
+
+  const origin = new URL(request.url).origin;
 
   if (error || !code) {
-    return NextResponse.redirect(`${new URL(request.url).origin}/?linkedin_auth=failed#projects`);
+    return NextResponse.redirect(`${origin}/?linkedin_auth=failed#projects`);
+  }
+
+  // 1. Validate CSRF OAuth State
+  const cookieStore = await cookies();
+  const storedState = cookieStore.get('linkedin_oauth_state')?.value;
+
+  if (!state || !storedState || state !== storedState) {
+    console.error('LinkedIn OAuth CSRF State Mismatch');
+    const errRes = NextResponse.redirect(`${origin}/?linkedin_auth=csrf_state_mismatch#projects`);
+    errRes.cookies.delete('linkedin_oauth_state');
+    return errRes;
   }
 
   const clientId = process.env.LINKEDIN_CLIENT_ID;
   const clientSecret = process.env.LINKEDIN_CLIENT_SECRET;
-  const redirectUri = process.env.LINKEDIN_REDIRECT_URI || `${new URL(request.url).origin}/api/linkedin/callback`;
+  const redirectUri = process.env.LINKEDIN_REDIRECT_URI || `${origin}/api/linkedin/callback`;
 
   if (!clientId || !clientSecret) {
-    return NextResponse.redirect(`${new URL(request.url).origin}/?linkedin_auth=missing_credentials#projects`);
+    const credRes = NextResponse.redirect(`${origin}/?linkedin_auth=missing_credentials#projects`);
+    credRes.cookies.delete('linkedin_oauth_state');
+    return credRes;
   }
 
   try {
@@ -31,11 +48,13 @@ export async function GET(request: Request) {
     });
 
     if (!tokenRes.ok) {
-      return NextResponse.redirect(`${new URL(request.url).origin}/?linkedin_auth=exchange_error#projects`);
+      const exchangeRes = NextResponse.redirect(`${origin}/?linkedin_auth=exchange_error#projects`);
+      exchangeRes.cookies.delete('linkedin_oauth_state');
+      return exchangeRes;
     }
 
     const tokenData = await tokenRes.json();
-    const response = NextResponse.redirect(`${new URL(request.url).origin}/?linkedin_auth=success#projects`);
+    const response = NextResponse.redirect(`${origin}/?linkedin_auth=success#projects`);
 
     // Set secure HTTP-only cookie with access token
     response.cookies.set('linkedin_access_token', tokenData.access_token, {
@@ -46,10 +65,14 @@ export async function GET(request: Request) {
       path: '/',
     });
 
+    // Delete temporary state cookie
+    response.cookies.delete('linkedin_oauth_state');
+
     return response;
   } catch (err) {
     console.error('LinkedIn callback error:', err);
-    return NextResponse.redirect(`${new URL(request.url).origin}/?linkedin_auth=server_error#projects`);
+    const serverErrRes = NextResponse.redirect(`${origin}/?linkedin_auth=server_error#projects`);
+    serverErrRes.cookies.delete('linkedin_oauth_state');
+    return serverErrRes;
   }
 }
-

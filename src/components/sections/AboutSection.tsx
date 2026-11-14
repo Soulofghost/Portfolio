@@ -67,7 +67,7 @@ export default function AboutSection() {
             className="lg:col-span-7 flex flex-col gap-6"
           >
             <h3 className="text-2xl font-bold text-slate-100 leading-snug">
-              Passionate Computer Science & AI Student Engineer from Kerala, India.
+              Passionate Computer Science & AI Student Engineer from Trivandrum, Kerala, India.
             </h3>
             <p className="text-slate-300 text-base leading-relaxed">
               {PERSONAL_INFO.bio}

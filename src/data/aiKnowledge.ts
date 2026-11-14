@@ -40,7 +40,7 @@ Startups & Ventures:
 
 Experience & Leadership:
 - Business Development Partner at TekLearn (2024 - Present): Managing educational tech outreach, strategic partnerships, student workshops, and growth pipelines.
-- B.Tech in Computer Science & Artificial Intelligence at Mar Baselios Christian College of Engineering and Technology (MBCCET), Peermade (2023 - 2027).
+- B.Tech in Computer Science & Artificial Intelligence at MBC College of Engineering & Technology (2025–Present).
 
 Instructions:
 - Keep answers informative, polite, concise (2-4 sentences max), and enthusiastic.
@@ -64,7 +64,7 @@ export function generateAiResponse(userMessage: string): string {
   }
 
   if (query.includes('who is') || query.includes('about') || query.includes('background') || query.includes('bio')) {
-    return `Alvin MS is a Computer Science & AI student, Java Developer, Full Stack Engineer, and Entrepreneur based in Kerala, India. He engineers high-reliability distributed systems, AI platforms, and enterprise software!`;
+    return `Alvin MS is a Computer Science & AI student, Java Developer, Full Stack Engineer, and Entrepreneur based in Trivandrum, Kerala, India. He engineers high-reliability distributed systems, AI platforms, and enterprise software!`;
   }
 
   if (query.includes('skill') || query.includes('java') || query.includes('stack') || query.includes('technolog')) {
@@ -72,7 +72,7 @@ export function generateAiResponse(userMessage: string): string {
   }
 
   if (query.includes('project') || query.includes('work') || query.includes('portfolio')) {
-    return `Alvin has engineered a massive 50-repository software portfolio featuring flagship platforms like SENTRIX (Civil Defense SEM), CIVIX (Civic Geotagging), NexaAPIX (AI Governance), NeuralDesk (Semantic RAG), and MultiSafe (Multisig Treasury). Check out the Projects section!`;
+    return `Alvin has engineered an extensive open-source software ecosystem featuring flagship platforms like SENTRIX (Civil Defense SEM), CIVIX (Civic Geotagging), NexaAPIX (AI Governance), NeuralDesk (Semantic RAG), and MultiSafe (Multisig Treasury). Check out the Projects section!`;
   }
 
   if (query.includes('startup') || query.includes('venture') || query.includes('nexauron') || query.includes('helix') || query.includes('entrepreneur')) {
@@ -84,7 +84,7 @@ export function generateAiResponse(userMessage: string): string {
   }
 
   if (query.includes('education') || query.includes('college') || query.includes('study') || query.includes('degree')) {
-    return `Alvin is pursuing his B.Tech in Computer Science & Artificial Intelligence at Mar Baselios Christian College of Engineering and Technology (MBCCET), Peermade (2023-2027).`;
+    return `Alvin is pursuing his B.Tech in Computer Science & Artificial Intelligence at MBC College of Engineering & Technology (2025–Present).`;
   }
 
   if (query.includes('experience') || query.includes('teklearn') || query.includes('job')) {

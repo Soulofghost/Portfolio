@@ -28,7 +28,7 @@ function ContactSection() {
     message: ''
   });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<{ type: 'success' | 'error'; msg: string } | null>(null);
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | 'info'; msg: string; mailtoUrl?: string } | null>(null);
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,10 +44,22 @@ function ContactSection() {
     setLoading(false);
 
     if (res.success) {
-      setStatus({ type: 'success', msg: res.message });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      if (res.delivered) {
+        setStatus({ type: 'success', msg: res.message });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus({
+          type: 'info',
+          msg: res.message,
+          mailtoUrl: res.mailtoUrl,
+        });
+      }
     } else {
-      setStatus({ type: 'error', msg: res.message });
+      setStatus({
+        type: 'error',
+        msg: res.message,
+        mailtoUrl: res.mailtoUrl,
+      });
     }
   }, [formData]);
 
@@ -175,14 +187,32 @@ function ContactSection() {
 
               {status && (
                 <div
-                  className={`p-4 rounded-xl text-xs flex items-center gap-2 ${
+                  className={`p-4 rounded-xl text-xs flex flex-col gap-2.5 ${
                     status.type === 'success'
                       ? 'bg-emerald-950/80 border border-emerald-500/40 text-emerald-300'
+                      : status.type === 'info'
+                      ? 'bg-cyan-950/80 border border-cyan-500/40 text-cyan-200'
                       : 'bg-rose-950/80 border border-rose-500/40 text-rose-300'
                   }`}
                 >
-                  {status.type === 'success' ? <HiCheckCircle className="text-lg flex-shrink-0" /> : <HiExclamationCircle className="text-lg flex-shrink-0" />}
-                  <span>{status.msg}</span>
+                  <div className="flex items-center gap-2">
+                    {status.type === 'success' ? (
+                      <HiCheckCircle className="text-lg flex-shrink-0" />
+                    ) : (
+                      <HiExclamationCircle className="text-lg flex-shrink-0" />
+                    )}
+                    <span>{status.msg}</span>
+                  </div>
+
+                  {status.mailtoUrl && (
+                    <a
+                      href={status.mailtoUrl}
+                      className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold font-mono text-xs transition-colors self-start shadow-sm"
+                    >
+                      <HiPaperAirplane className="text-xs" />
+                      <span>Open in Mail Client Directly</span>
+                    </a>
+                  )}
                 </div>
               )}
 

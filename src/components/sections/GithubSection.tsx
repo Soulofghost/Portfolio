@@ -177,7 +177,7 @@ function GithubSection() {
             </div>
             <div className="min-w-0">
               <div className="text-2xl sm:text-3xl font-black text-white">
-                {loading ? '...' : stats?.publicRepos || stats?.repos.length || 50}
+                {loading ? '...' : stats?.publicRepos || stats?.repos.length || 86}
               </div>
               <div className="text-xs font-mono text-slate-300 font-semibold">Public Repositories</div>
               <div className="text-[10px] font-mono text-slate-400 mt-0.5">

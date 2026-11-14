@@ -44,7 +44,7 @@ export async function fetchGithubData(username: string = 'Soulofghost', forceRef
         following: data.user.following || 0,
         avatarUrl: data.user.avatar_url || '/profile.jpg',
         bio: data.user.bio || 'Computer Science & AI Student | Java & Full Stack Developer',
-        location: data.user.location || 'Kerala, India',
+        location: data.user.location || 'Trivandrum, Kerala, India',
         hireable: true,
         repos: data.repos || [],
         rateLimitRemaining: data.rateLimitRemaining,
@@ -84,23 +84,23 @@ export async function fetchGithubData(username: string = 'Soulofghost', forceRef
 
     return {
       publicRepos: userData?.public_repos || repos.length,
-      followers: userData?.followers || 0,
-      following: userData?.following || 0,
+      followers: userData?.followers ?? 13,
+      following: userData?.following ?? 22,
       avatarUrl: userData?.avatar_url || '/profile.jpg',
       bio: userData?.bio || 'Computer Science & AI Student | Java & Full Stack Developer',
-      location: userData?.location || 'Kerala, India',
+      location: userData?.location || 'Trivandrum, Kerala, India',
       hireable: true,
       repos,
     };
   } catch (error) {
     console.error('Failed to fetch from GitHub directly:', error);
     return {
-      publicRepos: 42,
-      followers: 0,
-      following: 0,
+      publicRepos: 86,
+      followers: 13,
+      following: 22,
       avatarUrl: '/profile.jpg',
       bio: 'Computer Science & AI Student | Java & Full Stack Developer',
-      location: 'Kerala, India',
+      location: 'Trivandrum, Kerala, India',
       hireable: true,
       repos: [],
       isFallback: true,

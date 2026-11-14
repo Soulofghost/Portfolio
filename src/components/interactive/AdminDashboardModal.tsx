@@ -34,14 +34,23 @@ export default function AdminDashboardModal({ isOpen, onClose }: AdminDashboardM
   const [announcementText, setAnnouncementText] = useState('');
   const [copied, setCopied] = useState(false);
 
-  // Authenticate PIN
-  const handleLogin = (e: React.FormEvent) => {
+  // Authenticate PIN securely via server-side API route
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Default admin pin for Alvin MS
-    if (pin === 'alvin2026' || pin === 'Soulofghost' || pin === '2026') {
-      setIsAuthenticated(true);
-      setAuthError(false);
-    } else {
+    try {
+      const res = await fetch('/api/admin/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pin }),
+      });
+      const data = await res.json();
+      if (res.ok && data.authenticated) {
+        setIsAuthenticated(true);
+        setAuthError(false);
+      } else {
+        setAuthError(true);
+      }
+    } catch {
       setAuthError(true);
     }
   };
@@ -229,7 +238,7 @@ Engineered to production standards with automated test suites and clean architec
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
                     <div className="p-4 rounded-xl bg-slate-950/50 border border-slate-800">
                       <span className="text-slate-400 block mb-1">Total Repos Synced</span>
-                      <span className="text-xl font-bold text-white">{githubSyncData?.totalCount || '42+'}</span>
+                      <span className="text-xl font-bold text-white">{githubSyncData?.totalCount || 'Live'}</span>
                     </div>
                     <div className="p-4 rounded-xl bg-slate-950/50 border border-slate-800">
                       <span className="text-slate-400 block mb-1">Rate Limit Left</span>

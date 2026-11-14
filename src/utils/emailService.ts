@@ -5,21 +5,41 @@ export interface ContactFormData {
   message: string;
 }
 
-export async function sendContactEmail(data: ContactFormData): Promise<{ success: boolean; message: string }> {
+export interface ContactSendResult {
+  success: boolean;
+  message: string;
+  delivered?: boolean;
+  requiresDirectEmail?: boolean;
+  mailtoUrl?: string;
+  recipient?: string;
+}
+
+export async function sendContactEmail(data: ContactFormData): Promise<ContactSendResult> {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
 
-    console.log("Dispatching email message to alvinms493@gmail.com:", data);
+    const result = await res.json();
+    if (res.ok) {
+      return result;
+    }
 
-    return {
-      success: true,
-      message: `Thank you ${data.name}! Your message has been sent to Alvin MS (alvinms493@gmail.com). Alvin will respond to ${data.email} shortly.`
-    };
-  } catch (error) {
-    console.error("EmailJS dispatch failed:", error);
     return {
       success: false,
-      message: "Failed to send email. Please try emailing directly at alvinms493@gmail.com."
+      message: result.message || 'Failed to dispatch message. Please email directly at alvinms394@gmail.com.',
+      requiresDirectEmail: true,
+      mailtoUrl: `mailto:alvinms394@gmail.com?subject=${encodeURIComponent(data.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(data.message)}`,
+    };
+  } catch (error) {
+    console.error('Contact email dispatch failed:', error);
+    return {
+      success: false,
+      message: 'Network error communicating with contact service. Please email directly at alvinms394@gmail.com.',
+      requiresDirectEmail: true,
+      mailtoUrl: `mailto:alvinms394@gmail.com?subject=${encodeURIComponent(data.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(data.message)}`,
     };
   }
 }
