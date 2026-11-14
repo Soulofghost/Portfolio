@@ -218,7 +218,7 @@ npm run build
 - **Location:** Trivandrum, Kerala, India
 - **Education:** MBC College of Engineering & Technology (2025–Present)
 - **Email:** [alvinms394@gmail.com](mailto:alvinms394@gmail.com)
-- **Portfolio:** [https://alvin-ms-portfolio.alvinms394.workers.dev](https://alvin-ms-portfolio.alvinms394.workers.dev)
+- **Portfolio:** [https://portfolio.alvinms.workers.dev/](https://portfolio.alvinms.workers.dev/)
 - **GitHub:** [https://github.com/Soulofghost](https://github.com/Soulofghost)
 - **LinkedIn:** [https://www.linkedin.com/in/alvin-ms-b812a836b/](https://www.linkedin.com/in/alvin-ms-b812a836b/)
 - **Instagram:** [https://www.instagram.com/alvxnmz._](https://www.instagram.com/alvxnmz._)
