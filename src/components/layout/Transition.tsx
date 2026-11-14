@@ -10,7 +10,7 @@ export default function Transition() {
     // Unmount completely after animation to guarantee zero scroll or event interference
     const timer = setTimeout(() => {
       setVisible(false);
-    }, 700);
+    }, 350);
 
     return () => clearTimeout(timer);
   }, []);
@@ -24,7 +24,7 @@ export default function Transition() {
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
           className="w-full h-full bg-[#080c14]"
         />
       </div>

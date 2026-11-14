@@ -18,7 +18,7 @@ function ParticlesContainer() {
     let animationFrameId: number | null = null;
     let isVisible = true;
     let isRunning = false;
-    let width = (canvas.width = window.innerWidth);
+    let width = (canvas.width = Math.min(window.innerWidth, document.documentElement.clientWidth || window.innerWidth));
     let height = (canvas.height = window.innerHeight);
 
     // Limit particles based on screen resolution (ultra-lightweight on mobile)
@@ -130,7 +130,7 @@ function ParticlesContainer() {
 
     const handleResize = () => {
       if (!canvas) return;
-      width = canvas.width = window.innerWidth;
+      width = canvas.width = Math.min(window.innerWidth, document.documentElement.clientWidth || window.innerWidth);
       height = canvas.height = window.innerHeight;
     };
 
@@ -150,7 +150,7 @@ function ParticlesContainer() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none z-0 opacity-25"
+      className="absolute inset-0 pointer-events-none z-0 opacity-25 max-w-full overflow-hidden"
       aria-hidden="true"
     />
   );

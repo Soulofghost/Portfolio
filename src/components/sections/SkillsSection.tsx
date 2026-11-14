@@ -61,8 +61,8 @@ function SkillsSection() {
   );
 
   return (
-    <section id="skills" className="py-24 relative z-10 bg-slate-950/40 scroll-mt-20">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section id="skills" className="py-24 relative z-10 bg-slate-950/40 scroll-mt-20 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -90,7 +90,7 @@ function SkillsSection() {
                 <button
                   key={category.name}
                   onClick={() => setActiveTab(category.name)}
-                  className={`px-5 py-2.5 rounded-xl text-xs font-mono font-semibold transition-all duration-300 ${
+                  className={`px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs font-mono font-semibold transition-all duration-300 ${
                     isActive
                       ? 'bg-gradient-to-r from-purple-600 to-cyan-500 text-white shadow-lg shadow-purple-600/30'
                       : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
@@ -128,7 +128,7 @@ function SkillsSection() {
             return (
               <div
                 key={skill.name}
-                className={`p-6 rounded-2xl glass-card glass-card-hover border relative overflow-hidden ${
+                className={`p-4 sm:p-6 rounded-2xl glass-card glass-card-hover border relative overflow-hidden ${
                   skill.highlight
                     ? 'border-purple-500/30 hover:border-cyan-400/60'
                     : 'border-slate-800 hover:border-purple-500/40'

@@ -39,8 +39,8 @@ function ProjectsSection() {
   }, [selectedCategory]);
 
   return (
-    <section id="projects" className="py-24 relative z-10 scroll-mt-20">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section id="projects" className="py-24 relative z-10 scroll-mt-20 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -80,7 +80,7 @@ function ProjectsSection() {
         </div>
 
         {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProjects.map((project, index) => {
             const isSentrix = project.id === 'sentrix-platform';
 
@@ -100,7 +100,7 @@ function ProjectsSection() {
                 }`}
               >
                 {/* Header Banner */}
-                <div className="relative h-48 w-full overflow-hidden bg-slate-950 p-6 flex flex-col justify-between">
+                <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-950 p-4 sm:p-6 flex flex-col justify-between">
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${
                       isSentrix
@@ -138,7 +138,7 @@ function ProjectsSection() {
                 </div>
 
                 {/* Card Content Body */}
-                <div className="p-6 flex flex-col flex-1 justify-between">
+                <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between">
                   <div>
                     <p className="text-slate-300 text-xs line-clamp-3 leading-relaxed mb-4">
                       {project.description}
@@ -248,7 +248,7 @@ function ProjectsSection() {
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.94, opacity: 0, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-3xl bg-slate-900 border border-purple-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-purple-950/60 max-h-[90vh] overflow-y-auto"
+                className="w-full max-w-3xl bg-slate-900 border border-purple-500/40 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl shadow-purple-950/60 max-h-[90vh] overflow-y-auto"
               >
                 {/* Header */}
                 <div className="flex items-start justify-between border-b border-slate-800 pb-5 mb-5">

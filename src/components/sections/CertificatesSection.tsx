@@ -7,8 +7,8 @@ import { HiBadgeCheck, HiExternalLink } from 'react-icons/hi';
 
 export default function CertificatesSection() {
   return (
-    <section id="certificates" className="py-24 relative z-10">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section id="certificates" className="py-24 relative z-10 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -35,7 +35,7 @@ export default function CertificatesSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="glass-card glass-card-hover rounded-2xl p-6 border border-slate-800 hover:border-purple-500/50 flex flex-col justify-between"
+              className="glass-card glass-card-hover rounded-2xl p-4 sm:p-6 border border-slate-800 hover:border-purple-500/50 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -49,7 +49,7 @@ export default function CertificatesSection() {
 
                 <h3 className="text-lg font-bold text-white mb-1">{cert.title}</h3>
                 <div className="text-xs font-semibold text-purple-300 mb-3">{cert.issuer}</div>
-                <div className="text-xs font-mono text-slate-400 mb-6">Issued: {cert.date} • ID: {cert.credentialId}</div>
+                <div className="text-xs font-mono text-slate-400 mb-6 break-words">Issued: {cert.date} • ID: {cert.credentialId}</div>
               </div>
 
               <a

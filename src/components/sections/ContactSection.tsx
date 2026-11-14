@@ -52,8 +52,8 @@ function ContactSection() {
   }, [formData]);
 
   return (
-    <section id="contact" className="py-24 relative z-10 bg-slate-950/60 scroll-mt-20">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section id="contact" className="py-24 relative z-10 bg-slate-950/60 scroll-mt-20 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -80,7 +80,7 @@ function ContactSection() {
             viewport={{ once: true }}
             className="lg:col-span-5 flex flex-col gap-6"
           >
-            <div className="glass-card rounded-2xl p-6 border border-slate-800">
+            <div className="glass-card rounded-2xl p-4 sm:p-6 border border-slate-800">
               <h3 className="text-xl font-bold text-white mb-2">Direct Contact</h3>
               <p className="text-slate-400 text-xs leading-relaxed mb-4">
                 Available for internships, freelance projects, collaborations, and startup ventures.
@@ -93,9 +93,9 @@ function ContactSection() {
             </div>
 
             {/* Social Media Cards */}
-            <div className="glass-card rounded-2xl p-6 border border-slate-800">
+            <div className="glass-card rounded-2xl p-4 sm:p-6 border border-slate-800">
               <h4 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-4">Social Ecosystem</h4>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3">
                 {SOCIAL_LINKS.map((item) => {
                   const Icon = item.icon;
                   return (
@@ -104,10 +104,10 @@ function ContactSection() {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 flex flex-col items-center gap-1.5 transition-all duration-300 ${item.color}`}
+                      className={`p-2.5 sm:p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-slate-300 flex flex-col items-center gap-1.5 transition-all duration-300 ${item.color}`}
                     >
                       <Icon className="text-xl" />
-                      <span className="text-[10px] font-mono">{item.name}</span>
+                      <span className="text-[10px] font-mono truncate max-w-full">{item.name}</span>
                     </a>
                   );
                 })}
@@ -123,7 +123,7 @@ function ContactSection() {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 border border-purple-500/30 space-y-6">
+            <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-5 sm:p-8 border border-purple-500/30 space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs font-mono text-slate-300 mb-2">Your Name *</label>

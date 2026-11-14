@@ -60,15 +60,15 @@ function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
     >
       {/* Subtle restrained ambient glow - optimized, low-cost CSS radial gradients */}
       <div
-        className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"
+        className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[500px] max-w-full h-[350px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"
         aria-hidden="true"
       />
       <div
-        className="absolute top-1/3 right-1/4 w-[450px] h-[300px] bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none"
+        className="absolute top-1/3 right-1/4 w-[300px] sm:w-[450px] max-w-full h-[300px] bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none"
         aria-hidden="true"
       />
 
-      <div className="container mx-auto px-6 lg:px-12 max-w-7xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
           {/* Left Column: Introduction & Core Manifesto (7 cols on desktop) */}
@@ -165,7 +165,7 @@ function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
               variants={fadeIn('down', 0.65)}
               initial="hidden"
               animate="show"
-              className="flex items-center gap-3 text-slate-400 text-sm font-mono"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 text-slate-400 text-sm font-mono"
             >
               <span className="text-[11px] uppercase tracking-wider text-slate-500">Connect:</span>
               <a

@@ -33,9 +33,9 @@ function VenturesSection() {
   return (
     <section id="ventures" className="py-24 relative z-10 bg-slate-950/70 overflow-hidden scroll-mt-20">
       {/* Background Aurora Glow Lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-r from-purple-600/15 via-cyan-500/15 to-pink-500/15 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-[350px] bg-gradient-to-r from-purple-600/15 via-cyan-500/15 to-pink-500/15 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl relative z-10">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -86,10 +86,10 @@ function VenturesSection() {
               viewport={{ once: true }}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.4 }}
-              className="glass-card rounded-3xl p-8 sm:p-10 border border-purple-500/30 hover:border-cyan-400/60 shadow-2xl shadow-purple-950/40 relative overflow-hidden flex flex-col justify-between group"
+              className="glass-card rounded-3xl p-5 sm:p-8 lg:p-10 border border-purple-500/30 hover:border-cyan-400/60 shadow-2xl shadow-purple-950/40 relative overflow-hidden flex flex-col justify-between group"
             >
               {/* Corner Glow Blob */}
-              <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-gradient-to-br from-purple-600/30 to-cyan-500/30 blur-2xl group-hover:opacity-100 transition-opacity opacity-50 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-36 sm:w-48 h-36 sm:h-48 rounded-full bg-gradient-to-br from-purple-600/30 to-cyan-500/30 blur-2xl group-hover:opacity-100 transition-opacity opacity-50 pointer-events-none" />
 
               <div>
                 {/* Header Row: Title, Status Badge & Role */}
@@ -202,7 +202,7 @@ function VenturesSection() {
               return (
                 <div
                   key={idx}
-                  className="p-5 rounded-2xl glass-card text-center border border-slate-800 hover:border-cyan-500/50 transition-all hover:scale-105 flex flex-col items-center justify-between"
+                  className="p-3.5 sm:p-5 rounded-2xl glass-card text-center border border-slate-800 hover:border-cyan-500/50 transition-all hover:scale-105 flex flex-col items-center justify-between"
                 >
                   <div className="w-10 h-10 rounded-xl bg-slate-900 border border-purple-500/30 flex items-center justify-center text-cyan-400 text-xl mb-3 shadow-inner">
                     <IconComp />

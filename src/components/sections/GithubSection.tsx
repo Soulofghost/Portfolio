@@ -122,8 +122,8 @@ function GithubSection() {
   const hasMore = paginatedRepos.length < filteredRepos.length;
 
   return (
-    <section id="github" className="py-24 relative z-10 bg-slate-950/70 scroll-mt-20">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section id="github" className="py-24 relative z-10 bg-slate-950/70 scroll-mt-20 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -146,8 +146,8 @@ function GithubSection() {
         </motion.div>
 
         {/* Live GitHub Stats Metrics Bar */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
-          <div className="p-6 rounded-2xl glass-card border border-purple-500/30 flex items-center gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-12">
+          <div className="p-4 sm:p-6 rounded-2xl glass-card border border-purple-500/30 flex items-center gap-4">
             <div className="p-3.5 rounded-2xl bg-purple-900/40 text-purple-400 text-2xl border border-purple-500/30">
               <FaBook />
             </div>
@@ -159,7 +159,7 @@ function GithubSection() {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl glass-card border border-cyan-500/30 flex items-center gap-4">
+          <div className="p-4 sm:p-6 rounded-2xl glass-card border border-cyan-500/30 flex items-center gap-4">
             <div className="p-3.5 rounded-2xl bg-cyan-900/40 text-cyan-400 text-2xl border border-cyan-500/30">
               <HiCode />
             </div>
@@ -171,7 +171,7 @@ function GithubSection() {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl glass-card border border-pink-500/30 flex items-center gap-4">
+          <div className="p-4 sm:p-6 rounded-2xl glass-card border border-pink-500/30 flex items-center gap-4">
             <div className="p-3.5 rounded-2xl bg-pink-900/40 text-pink-400 text-2xl border border-pink-500/30">
               <HiSparkles />
             </div>
@@ -183,7 +183,7 @@ function GithubSection() {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl glass-card border border-emerald-500/30 flex items-center justify-between">
+          <div className="p-4 sm:p-6 rounded-2xl glass-card border border-emerald-500/30 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="p-3.5 rounded-2xl bg-emerald-900/40 text-emerald-400 text-2xl border border-emerald-500/30">
                 <FaGithub />
@@ -206,7 +206,7 @@ function GithubSection() {
         </div>
 
         {/* Search, Filter & Controls Panel */}
-        <div className="p-6 rounded-3xl glass-card border border-slate-800 mb-10 space-y-5">
+        <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl glass-card border border-slate-800 mb-10 space-y-5">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
             {/* Search Input */}
             <div className="md:col-span-6 relative">
@@ -326,7 +326,7 @@ function GithubSection() {
               return (
                 <div
                   key={repo.id}
-                  className="glass-card glass-card-hover rounded-2xl p-6 border border-slate-800 hover:border-purple-500/50 flex flex-col justify-between transition-all duration-300"
+                  className="glass-card glass-card-hover rounded-2xl p-4 sm:p-6 border border-slate-800 hover:border-purple-500/50 flex flex-col justify-between transition-all duration-300"
                 >
                   <div>
                     {/* Header: Name & Language */}

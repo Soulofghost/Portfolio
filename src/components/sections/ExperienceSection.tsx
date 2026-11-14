@@ -7,8 +7,8 @@ import { HiBriefcase, HiCheckCircle } from 'react-icons/hi';
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 relative z-10 scroll-mt-20">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section id="experience" className="py-24 relative z-10 scroll-mt-20 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -35,7 +35,7 @@ export default function ExperienceSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="glass-card glass-card-hover rounded-2xl p-8 border border-slate-800 hover:border-purple-500/50 relative overflow-hidden"
+              className="glass-card glass-card-hover rounded-2xl p-5 sm:p-8 border border-slate-800 hover:border-purple-500/50 relative overflow-hidden"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-slate-800 pb-4">
                 <div>

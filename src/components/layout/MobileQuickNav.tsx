@@ -83,10 +83,10 @@ export default function MobileQuickNav({ onOpenResume, onOpenCommandPalette }: M
     <>
       {/* Mobile Bottom Navigation Bar */}
       <nav
-        className="xl:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#080c14]/92 backdrop-blur-lg border-t border-white/10 px-2 py-2 safe-area-pb"
+        className="xl:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#080c14]/92 backdrop-blur-lg border-t border-white/10 px-2 py-2 safe-area-pb max-w-full overflow-hidden"
         aria-label="Mobile Navigation"
       >
-        <div className="flex items-center justify-around max-w-md mx-auto">
+        <div className="flex items-center justify-around w-full max-w-md mx-auto">
           {primaryLinks.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -94,14 +94,14 @@ export default function MobileQuickNav({ onOpenResume, onOpenCommandPalette }: M
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`flex flex-col items-center justify-center p-1.5 min-w-[50px] rounded-xl transition-all duration-200 ${
+                className={`flex flex-col items-center justify-center p-1.5 flex-1 min-w-0 max-w-[64px] rounded-xl transition-all duration-200 ${
                   isActive
                     ? 'text-emerald-400 font-bold bg-emerald-950/40 border border-emerald-500/30'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 <Icon className={`text-lg ${isActive ? 'scale-105' : ''}`} />
-                <span className="text-[10px] font-mono mt-0.5 tracking-tight">{item.name}</span>
+                <span className="text-[10px] font-mono mt-0.5 tracking-tight truncate w-full text-center">{item.name}</span>
               </button>
             );
           })}
@@ -109,14 +109,14 @@ export default function MobileQuickNav({ onOpenResume, onOpenCommandPalette }: M
           {/* More Action Trigger */}
           <button
             onClick={() => setIsMoreOpen(true)}
-            className={`flex flex-col items-center justify-center p-1.5 min-w-[50px] rounded-xl transition-all duration-200 ${
+            className={`flex flex-col items-center justify-center p-1.5 flex-1 min-w-0 max-w-[64px] rounded-xl transition-all duration-200 ${
               isMoreOpen
                 ? 'text-teal-400 font-bold bg-teal-950/40 border border-teal-500/30'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
             <HiDotsHorizontal className="text-lg" />
-            <span className="text-[10px] font-mono mt-0.5 tracking-tight">More</span>
+            <span className="text-[10px] font-mono mt-0.5 tracking-tight truncate w-full text-center">More</span>
           </button>
         </div>
       </nav>

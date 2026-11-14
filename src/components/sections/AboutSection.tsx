@@ -8,8 +8,8 @@ import Image from 'next/image';
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 relative z-10 scroll-mt-20">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section id="about" className="py-24 relative z-10 scroll-mt-20 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -37,7 +37,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="lg:col-span-5 flex justify-center"
           >
-            <div className="relative group w-72 h-72 sm:w-80 sm:h-80 rounded-2xl p-1 bg-gradient-to-tr from-cyan-500 via-purple-600 to-pink-500 shadow-2xl shadow-purple-900/30">
+            <div className="relative group w-full max-w-[270px] sm:max-w-[320px] aspect-square rounded-2xl p-1 bg-gradient-to-tr from-cyan-500 via-purple-600 to-pink-500 shadow-2xl shadow-purple-900/30">
               <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-950">
                 <Image
                   src="/profile.jpg"
@@ -77,16 +77,16 @@ export default function AboutSection() {
             </p>
 
             {/* Quick Highlights */}
-            <div className="grid grid-cols-2 gap-4 mt-2">
-              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
-                <HiCode className="text-2xl text-purple-400" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-2">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
+                <HiCode className="text-2xl text-purple-400 flex-shrink-0" />
                 <div>
                   <div className="text-xs text-slate-400">Core Focus</div>
                   <div className="text-sm font-bold text-slate-200">Java & AI Solutions</div>
                 </div>
               </div>
-              <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
-                <HiAcademicCap className="text-2xl text-cyan-400" />
+              <div className="p-3.5 sm:p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
+                <HiAcademicCap className="text-2xl text-cyan-400 flex-shrink-0" />
                 <div>
                   <div className="text-xs text-slate-400">Education</div>
                   <div className="text-sm font-bold text-slate-200">B.Tech CS & AI</div>
@@ -102,40 +102,40 @@ export default function AboutSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6"
         >
-          <div className="p-6 rounded-2xl glass-card text-center border border-purple-500/20 hover:border-purple-500/50 transition-all">
-            <div className="text-4xl lg:text-5xl font-black text-gradient mb-1">
+          <div className="p-4 sm:p-6 rounded-2xl glass-card text-center border border-purple-500/20 hover:border-purple-500/50 transition-all">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-gradient mb-1">
               {PERSONAL_INFO.stats.projectsCompleted}+
             </div>
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+            <div className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider">
               Projects Completed
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl glass-card text-center border border-cyan-500/20 hover:border-cyan-500/50 transition-all">
-            <div className="text-4xl lg:text-5xl font-black text-gradient-cyan mb-1">
+          <div className="p-4 sm:p-6 rounded-2xl glass-card text-center border border-cyan-500/20 hover:border-cyan-500/50 transition-all">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-gradient-cyan mb-1">
               {PERSONAL_INFO.stats.technologiesLearned}+
             </div>
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+            <div className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider">
               Technologies Learned
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl glass-card text-center border border-purple-500/20 hover:border-purple-500/50 transition-all">
-            <div className="text-4xl lg:text-5xl font-black text-gradient mb-1">
+          <div className="p-4 sm:p-6 rounded-2xl glass-card text-center border border-purple-500/20 hover:border-purple-500/50 transition-all">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-gradient mb-1">
               {PERSONAL_INFO.stats.githubRepositories}+
             </div>
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+            <div className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider">
               GitHub Repositories
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl glass-card text-center border border-pink-500/20 hover:border-pink-500/50 transition-all">
-            <div className="text-4xl lg:text-5xl font-black text-gradient-cyan mb-1">
+          <div className="p-4 sm:p-6 rounded-2xl glass-card text-center border border-pink-500/20 hover:border-pink-500/50 transition-all">
+            <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-gradient-cyan mb-1">
               {PERSONAL_INFO.stats.yearsLearning}+
             </div>
-            <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
+            <div className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider">
               Years Learning
             </div>
           </div>

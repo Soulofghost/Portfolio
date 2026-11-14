@@ -41,7 +41,7 @@ export default function AIChatbot() {
       {/* Floating Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-24 right-6 z-40 p-4 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white shadow-2xl shadow-purple-600/50 hover:scale-110 transition-transform duration-300 flex items-center justify-center group border border-white/20"
+        className="fixed bottom-24 right-4 sm:right-6 z-40 p-4 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white shadow-2xl shadow-purple-600/50 hover:scale-110 transition-transform duration-300 flex items-center justify-center group border border-white/20"
         title="AI Assistant Chat"
       >
         <FaRobot className="text-2xl group-hover:rotate-12 transition-transform" />
@@ -58,7 +58,7 @@ export default function AIChatbot() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-28 right-6 z-50 w-[90vw] sm:w-[380px] h-[480px] bg-slate-900/95 backdrop-blur-xl border border-purple-500/40 rounded-2xl shadow-2xl shadow-purple-950/60 flex flex-col overflow-hidden"
+            className="fixed bottom-28 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[380px] max-w-[380px] h-[480px] max-h-[75vh] bg-slate-900/95 backdrop-blur-xl border border-purple-500/40 rounded-2xl shadow-2xl shadow-purple-950/60 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="px-4 py-3 bg-slate-950 border-b border-purple-500/30 flex items-center justify-between">

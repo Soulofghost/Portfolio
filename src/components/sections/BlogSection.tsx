@@ -11,8 +11,8 @@ export default function BlogSection() {
   const [activeArticle, setActiveArticle] = useState<BlogPost | null>(null);
 
   return (
-    <section id="blog" className="py-24 relative z-10">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section id="blog" className="py-24 relative z-10 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -56,7 +56,7 @@ export default function BlogSection() {
                 </div>
               </div>
 
-              <div className="p-6 flex flex-col flex-1 justify-between">
+              <div className="p-4 sm:p-6 flex flex-col flex-1 justify-between">
                 <div>
                   <div className="flex items-center gap-3 text-xs text-slate-400 font-mono mb-2">
                     <span>{post.date}</span>

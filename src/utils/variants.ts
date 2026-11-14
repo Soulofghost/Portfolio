@@ -3,8 +3,8 @@ import { Variants } from 'framer-motion';
 export const fadeIn = (direction: 'up' | 'down' | 'left' | 'right', delay: number): Variants => {
   return {
     hidden: {
-      y: direction === 'up' ? 30 : direction === 'down' ? -30 : 0,
-      x: direction === 'left' ? 30 : direction === 'right' ? -30 : 0,
+      y: direction === 'up' ? 24 : direction === 'down' ? -24 : 0,
+      x: 0,
       opacity: 0,
     },
     show: {
@@ -13,8 +13,8 @@ export const fadeIn = (direction: 'up' | 'down' | 'left' | 'right', delay: numbe
       opacity: 1,
       transition: {
         type: 'tween',
-        duration: 0.5,
-        delay: delay * 0.5,
+        duration: 0.4,
+        delay: delay * 0.4,
         ease: [0.16, 1, 0.3, 1],
       },
     },

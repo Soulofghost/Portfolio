@@ -16,8 +16,8 @@ const ICON_COMPONENTS: Record<string, any> = {
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-24 relative z-10 bg-slate-950/60">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section id="services" className="py-24 relative z-10 bg-slate-950/60 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -46,7 +46,7 @@ export default function ServicesSection() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="glass-card glass-card-hover rounded-2xl p-8 border border-slate-800 hover:border-purple-500/50 flex flex-col justify-between"
+                className="glass-card glass-card-hover rounded-2xl p-5 sm:p-8 border border-slate-800 hover:border-purple-500/50 flex flex-col justify-between"
               >
                 <div>
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-600/20 to-cyan-500/20 border border-purple-500/30 flex items-center justify-center text-3xl text-cyan-400 mb-6 shadow-inner">

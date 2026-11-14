@@ -7,8 +7,8 @@ import { FaTrophy } from 'react-icons/fa';
 
 export default function AchievementsSection() {
   return (
-    <section className="py-24 relative z-10">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section className="py-24 relative z-10 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -27,7 +27,7 @@ export default function AchievementsSection() {
         </motion.div>
 
         {/* Achievements Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {ACHIEVEMENTS.map((ach, index) => (
             <motion.div
               key={ach.title}
@@ -35,7 +35,7 @@ export default function AchievementsSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="glass-card glass-card-hover rounded-2xl p-8 border border-slate-800 hover:border-purple-500/50 flex items-start gap-6"
+              className="glass-card glass-card-hover rounded-2xl p-5 sm:p-8 border border-slate-800 hover:border-purple-500/50 flex flex-col sm:flex-row items-start gap-4 sm:gap-6"
             >
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-purple-600 flex items-center justify-center text-3xl text-white shadow-lg shadow-amber-500/20 flex-shrink-0">
                 <FaTrophy />

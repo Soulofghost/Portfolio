@@ -34,6 +34,7 @@ const AdminDashboardModal = dynamic(() => import('@/components/interactive/Admin
 const ScrollProgressBar = dynamic(() => import('@/components/layout/ScrollProgressBar'), { ssr: false });
 const BackToTop = dynamic(() => import('@/components/layout/BackToTop'), { ssr: false });
 const MobileQuickNav = dynamic(() => import('@/components/layout/MobileQuickNav'), { ssr: false });
+const ScrollOptimizer = dynamic(() => import('@/components/layout/ScrollOptimizer'), { ssr: false });
 
 function Home() {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
@@ -71,7 +72,10 @@ function Home() {
   }, [isResumeModalOpen, isMatrixActive, isAdminModalOpen]);
 
   return (
-    <main className="relative min-h-screen bg-[#080c14] text-slate-100 overflow-x-hidden selection:bg-emerald-500 selection:text-black">
+    <main className="relative min-h-screen bg-[#080c14] text-slate-100 max-w-full overflow-x-clip selection:bg-emerald-500 selection:text-black">
+      {/* Scroll Speed & Smoothness Optimizer */}
+      <ScrollOptimizer />
+
       {/* Scroll Progress Indicator Bar */}
       <ScrollProgressBar />
 

@@ -22,8 +22,8 @@ export default function TestimonialsSection() {
   const current = TESTIMONIALS[currentIndex];
 
   return (
-    <section className="py-24 relative z-10 bg-slate-950/60">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+    <section className="py-24 relative z-10 bg-slate-950/60 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div
           variants={fadeIn('up', 0.2)}
@@ -48,7 +48,7 @@ export default function TestimonialsSection() {
             variants={fadeIn('up', 0.2)}
             initial="hidden"
             animate="show"
-            className="glass-card rounded-3xl p-8 sm:p-12 border border-purple-500/30 relative overflow-hidden shadow-2xl shadow-purple-950/40"
+            className="glass-card rounded-3xl p-5 sm:p-8 md:p-12 border border-purple-500/30 relative overflow-hidden shadow-2xl shadow-purple-950/40"
           >
             <FaQuoteLeft className="text-5xl text-purple-500/20 absolute top-6 left-8 pointer-events-none" />
 

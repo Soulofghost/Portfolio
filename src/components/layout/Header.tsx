@@ -24,7 +24,7 @@ export default function Header({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 w-full flex items-center px-6 lg:px-12 h-[68px] bg-[#080c14]/85 backdrop-blur-md border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-40 w-full flex items-center px-3.5 sm:px-6 lg:px-12 h-[68px] bg-[#080c14]/85 backdrop-blur-md border-b border-white/5">
       <div className="container mx-auto max-w-7xl flex justify-between items-center">
         {/* Brand Logo */}
         <a href="#home" onClick={scrollToHome} className="flex items-center gap-3 group">
@@ -57,7 +57,7 @@ export default function Header({
           {/* Command Palette Trigger */}
           <button
             onClick={onOpenCommandPalette}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-xs text-slate-300 border border-slate-700/80 font-mono transition-all hover:border-emerald-500/40"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-xs text-slate-300 border border-slate-700/80 font-mono transition-all hover:border-emerald-500/40"
             title="Open Command Palette (Ctrl+K or ⌘K)"
             aria-label="Open Command Palette"
           >
