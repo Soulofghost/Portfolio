@@ -195,3 +195,4 @@ Building scalable, production-oriented software with clean architectures and aut
     </AnimatePresence>
   );
 }
+

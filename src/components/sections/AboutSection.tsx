@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 relative z-10">
+    <section id="about" className="py-24 relative z-10 scroll-mt-20">
       <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div

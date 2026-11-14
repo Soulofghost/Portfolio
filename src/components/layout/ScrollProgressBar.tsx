@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function ScrollProgressBar() {
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const barRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let ticking = false;
@@ -11,10 +11,13 @@ export default function ScrollProgressBar() {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-          if (totalHeight > 0) {
-            const currentProgress = (window.scrollY / totalHeight) * 100;
-            setScrollProgress(Math.min(100, Math.max(0, currentProgress)));
+          const bar = barRef.current;
+          if (bar) {
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (totalHeight > 0) {
+              const progress = Math.min(1, Math.max(0, window.scrollY / totalHeight));
+              bar.style.transform = `scaleX(${progress})`;
+            }
           }
           ticking = false;
         });
@@ -28,12 +31,13 @@ export default function ScrollProgressBar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 h-[3px] z-[60] bg-slate-900/40 pointer-events-none"
+      className="fixed top-0 left-0 right-0 h-[2.5px] z-[60] bg-transparent pointer-events-none"
       aria-hidden="true"
     >
       <div
-        className="h-full bg-gradient-to-r from-purple-500 via-cyan-400 to-pink-500 transition-transform duration-75 ease-out origin-left shadow-[0_0_12px_rgba(6,182,212,0.8)]"
-        style={{ transform: `scaleX(${scrollProgress / 100})` }}
+        ref={barRef}
+        className="h-full bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 origin-left shadow-[0_0_8px_rgba(52,211,153,0.6)]"
+        style={{ transform: 'scaleX(0)', willChange: 'transform' }}
       />
     </div>
   );

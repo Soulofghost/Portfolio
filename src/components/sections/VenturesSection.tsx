@@ -31,7 +31,7 @@ const STAT_ICONS: Record<string, any> = {
 
 function VenturesSection() {
   return (
-    <section id="ventures" className="py-24 relative z-10 bg-slate-950/70 overflow-hidden">
+    <section id="ventures" className="py-24 relative z-10 bg-slate-950/70 overflow-hidden scroll-mt-20">
       {/* Background Aurora Glow Lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-r from-purple-600/15 via-cyan-500/15 to-pink-500/15 blur-[120px] rounded-full pointer-events-none" />
 

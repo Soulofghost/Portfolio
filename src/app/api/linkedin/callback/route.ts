@@ -52,3 +52,4 @@ export async function GET(request: Request) {
     return NextResponse.redirect(`${new URL(request.url).origin}/?linkedin_auth=server_error#projects`);
   }
 }
+

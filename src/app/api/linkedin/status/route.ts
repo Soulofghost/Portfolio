@@ -14,3 +14,4 @@ export async function GET() {
     mode: token ? 'authenticated_api' : 'web_share_intent',
   });
 }
+

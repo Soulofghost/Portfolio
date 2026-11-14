@@ -61,7 +61,7 @@ function SkillsSection() {
   );
 
   return (
-    <section id="skills" className="py-24 relative z-10 bg-slate-950/40">
+    <section id="skills" className="py-24 relative z-10 bg-slate-950/40 scroll-mt-20">
       <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
         {/* Section Heading */}
         <motion.div

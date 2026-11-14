@@ -3,9 +3,6 @@
 import { useState, useCallback, useEffect, memo } from 'react';
 import dynamic from 'next/dynamic';
 import Transition from '@/components/layout/Transition';
-import TopLeftImg from '@/components/layout/TopLeftImg';
-import Circles from '@/components/layout/Circles';
-import Bulb from '@/components/layout/Bulb';
 import Header from '@/components/layout/Header';
 import Nav from '@/components/layout/Nav';
 import HeroSection from '@/components/hero/HeroSection';
@@ -27,7 +24,7 @@ const AchievementsSection = dynamic(() => import('@/components/sections/Achievem
 const TestimonialsSection = dynamic(() => import('@/components/sections/TestimonialsSection'), { ssr: true });
 const BlogSection = dynamic(() => import('@/components/sections/BlogSection'), { ssr: true });
 
-// Code-split interactive tools, modals & heavy visual overlays
+// Code-split interactive tools, modals & background canvas
 const ParticlesContainer = dynamic(() => import('@/components/hero/ParticlesContainer'), { ssr: false });
 const AIChatbot = dynamic(() => import('@/components/interactive/AIChatbot'), { ssr: false });
 const ResumeModal = dynamic(() => import('@/components/interactive/ResumeModal'), { ssr: false });
@@ -74,19 +71,14 @@ function Home() {
   }, [isResumeModalOpen, isMatrixActive, isAdminModalOpen]);
 
   return (
-    <main className="relative min-h-screen bg-[#030712] text-slate-100 overflow-x-hidden selection:bg-purple-500 selection:text-white">
+    <main className="relative min-h-screen bg-[#080c14] text-slate-100 overflow-x-hidden selection:bg-emerald-500 selection:text-black">
       {/* Scroll Progress Indicator Bar */}
       <ScrollProgressBar />
 
-      {/* Page Entry Transition Curtains */}
+      {/* Page Entry Transition Curtains (auto-unmounts after 700ms) */}
       <Transition />
 
-      {/* Ambient Cyberpunk Glow Graphic Overlays */}
-      <TopLeftImg />
-      <Circles />
-      <Bulb />
-
-      {/* Optimized Background Particles Canvas */}
+      {/* Lightweight Ambient Particles Canvas */}
       <ParticlesContainer />
 
       {/* Fixed Header */}

@@ -1,199 +1,291 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
+import { useState, useEffect, memo } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { fadeIn } from '@/utils/variants';
 import { PERSONAL_INFO } from '@/data/portfolioData';
-import { HiDownload, HiPaperAirplane, HiCode } from 'react-icons/hi';
-import { FaGithub, FaLinkedin, FaInstagram, FaDiscord } from 'react-icons/fa';
-
-const HeroVideoCard = dynamic(() => import('./video/HeroVideoCard'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-[350px] sm:h-[480px] lg:h-[540px] rounded-[18px] sm:rounded-[24px] glass-card border border-white/20 flex flex-col items-center justify-center gap-3 p-6 text-center">
-      <div className="w-10 h-10 rounded-full border-4 border-cyan-400 border-t-transparent animate-spin" />
-      <span className="text-xs font-mono text-cyan-300 font-bold uppercase tracking-wider">
-        Loading Solo Leveling Video...
-      </span>
-    </div>
-  ),
-});
-
-const FloatingTechBadges = dynamic(() => import('./video/FloatingTechBadges'), {
-  ssr: false,
-});
+import { HiDownload, HiArrowRight, HiMail, HiLocationMarker, HiShieldCheck, HiCode } from 'react-icons/hi';
+import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 interface HeroSectionProps {
   onOpenResumeModal: () => void;
 }
 
-export default function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
+const ROLES = [
+  'Computer Science & AI Student',
+  'Full Stack Developer',
+  'Java Developer',
+  'AI Enthusiast',
+  'Entrepreneur',
+];
+
+function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const currentRole = PERSONAL_INFO.roles[roleIndex];
-    const typingSpeed = isDeleting ? 40 : 80;
+    const currentRole = ROLES[roleIndex];
+    const typingSpeed = isDeleting ? 30 : 65;
 
     const timeout = setTimeout(() => {
       if (!isDeleting && displayedText.length < currentRole.length) {
         setDisplayedText(currentRole.slice(0, displayedText.length + 1));
       } else if (!isDeleting && displayedText.length === currentRole.length) {
-        setTimeout(() => setIsDeleting(true), 1800);
+        setTimeout(() => setIsDeleting(true), 2000);
       } else if (isDeleting && displayedText.length > 0) {
         setDisplayedText(currentRole.slice(0, displayedText.length - 1));
       } else if (isDeleting && displayedText.length === 0) {
         setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % PERSONAL_INFO.roles.length);
+        setRoleIndex((prev) => (prev + 1) % ROLES.length);
       }
     }, typingSpeed);
 
     return () => clearTimeout(timeout);
   }, [displayedText, isDeleting, roleIndex]);
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="home" className="relative w-full min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
-      <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-14">
-          {/* Left Column (45% Desktop Layout Split) */}
-          <div className="w-full lg:w-[45%] flex flex-col items-center lg:items-start text-center lg:text-left z-10">
-            {/* Greeting Pill */}
+    <section
+      id="home"
+      className="relative w-full pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden"
+    >
+      {/* Subtle restrained ambient glow - optimized, low-cost CSS radial gradients */}
+      <div
+        className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-1/3 right-1/4 w-[450px] h-[300px] bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none"
+        aria-hidden="true"
+      />
+
+      <div className="container mx-auto px-6 lg:px-12 max-w-7xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          
+          {/* Left Column: Introduction & Core Manifesto (7 cols on desktop) */}
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+            
+            {/* Identity Overline Pill */}
             <motion.div
-              variants={fadeIn('down', 0.2)}
+              variants={fadeIn('down', 0.15)}
               initial="hidden"
               animate="show"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-purple-500/30 text-xs font-mono text-cyan-300 mb-6 shadow-lg shadow-purple-950/40"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs font-mono text-slate-300 mb-6 shadow-sm"
             >
-              <HiCode className="text-purple-400 text-sm" />
-              <span>Hello, I am</span>
-              <span className="text-white font-bold tracking-wide">Alvin MS</span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="text-white font-semibold tracking-wider uppercase">ALVIN MS</span>
+              <span className="text-slate-500">—</span>
+              <span className="text-emerald-400 font-medium">Software / AI / Ventures</span>
             </motion.div>
 
-            {/* Main Headline */}
+            {/* Editorial Main Headline */}
             <motion.h1
-              variants={fadeIn('down', 0.3)}
+              variants={fadeIn('down', 0.25)}
               initial="hidden"
               animate="show"
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.12] mb-5"
             >
-              Transforming Ideas Into <br />
-              <span className="text-gradient">Intelligent Software</span>
+              Building software. <br className="hidden sm:inline" />
+              Designing systems. <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+                Creating ideas that matter.
+              </span>
             </motion.h1>
 
             {/* Dynamic Typewriter Role */}
             <motion.div
-              variants={fadeIn('down', 0.4)}
+              variants={fadeIn('down', 0.35)}
               initial="hidden"
               animate="show"
-              className="h-10 text-xl sm:text-2xl font-mono text-cyan-400 font-semibold mb-6 flex items-center"
+              className="h-9 text-base sm:text-lg font-mono text-emerald-400 font-semibold mb-5 flex items-center justify-center lg:justify-start"
             >
-              <span>I am a&nbsp;</span>
-              <span className="text-purple-400 underline decoration-cyan-500 decoration-2 underline-offset-4">
-                {displayedText}
-              </span>
-              <span className="animate-pulse text-cyan-400">|</span>
+              <span className="text-slate-400 font-normal">Focus:&nbsp;</span>
+              <span className="text-white">{displayedText}</span>
+              <span className="animate-pulse text-emerald-400 ml-0.5">_</span>
             </motion.div>
 
-            {/* Subtitle / Bio */}
+            {/* Supporting Description */}
             <motion.p
-              variants={fadeIn('down', 0.5)}
+              variants={fadeIn('down', 0.45)}
               initial="hidden"
               animate="show"
-              className="text-slate-300 max-w-xl text-base sm:text-lg leading-relaxed mb-8 font-normal"
+              className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mb-8 font-normal"
             >
-              {PERSONAL_INFO.tagline} Focused on building robust enterprise Java applications, full-stack web platforms, and AI-driven digital experiences.
+              I am a Computer Science & Artificial Intelligence student, software developer and entrepreneur interested in building intelligent applications, scalable digital platforms and technology-driven products. My focus includes software engineering, AI, full-stack development, backend systems and entrepreneurship.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* Primary Action Buttons */}
             <motion.div
-              variants={fadeIn('down', 0.6)}
+              variants={fadeIn('down', 0.55)}
               initial="hidden"
               animate="show"
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-10"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 mb-8 w-full sm:w-auto"
             >
+              <a
+                href="#projects"
+                onClick={(e) => handleSmoothScroll(e, 'projects')}
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#080c14] font-bold text-xs font-mono flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 hover:scale-[1.02] transition-all duration-200"
+              >
+                <span>Explore My Projects</span>
+                <HiArrowRight className="text-sm" />
+              </a>
+
               <button
                 onClick={onOpenResumeModal}
-                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-semibold text-sm flex items-center gap-2 shadow-lg shadow-purple-600/30 hover:scale-105 transition-all duration-300"
+                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#0f172a] hover:bg-[#1e293b] border border-slate-700/80 hover:border-emerald-500/40 text-slate-200 hover:text-white font-semibold text-xs font-mono flex items-center justify-center gap-2 transition-all duration-200 shadow-sm"
               >
-                <HiDownload className="text-lg" />
+                <HiDownload className="text-sm text-emerald-400" />
                 <span>Download Resume</span>
               </button>
 
               <a
                 href="#contact"
-                className="px-6 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-purple-500/30 hover:border-cyan-400 text-slate-200 font-semibold text-sm flex items-center gap-2 shadow-md hover:scale-105 transition-all duration-300"
+                onClick={(e) => handleSmoothScroll(e, 'contact')}
+                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white text-xs font-mono flex items-center justify-center gap-2 transition-colors duration-200"
               >
-                <HiPaperAirplane className="text-lg text-cyan-400" />
-                <span>Hire Me</span>
-              </a>
-
-              <a
-                href="#projects"
-                className="px-6 py-3.5 rounded-xl bg-slate-950/60 hover:bg-slate-900 border border-slate-800 text-slate-300 hover:text-white text-sm font-semibold hover:border-slate-700 transition-all duration-300"
-              >
-                View Projects
+                <HiMail className="text-sm text-cyan-400" />
+                <span>Contact Me</span>
               </a>
             </motion.div>
 
-            {/* Social Icons Bar */}
+            {/* Secondary Social Links */}
             <motion.div
-              variants={fadeIn('down', 0.7)}
+              variants={fadeIn('down', 0.65)}
               initial="hidden"
               animate="show"
-              className="flex items-center gap-4 text-slate-400"
+              className="flex items-center gap-3 text-slate-400 text-sm font-mono"
             >
-              <span className="text-xs font-mono uppercase tracking-widest text-slate-500">Connect:</span>
+              <span className="text-[11px] uppercase tracking-wider text-slate-500">Connect:</span>
               <a
                 href={PERSONAL_INFO.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 hover:text-white hover:scale-110 transition-all"
+                className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-slate-700 hover:text-white flex items-center gap-1.5 transition-colors text-xs"
+                title="GitHub (@Soulofghost)"
               >
-                <FaGithub className="text-lg" />
+                <FaGithub />
+                <span>GitHub</span>
               </a>
               <a
                 href={PERSONAL_INFO.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-400 hover:scale-110 transition-all"
+                className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 hover:text-emerald-400 flex items-center gap-1.5 transition-colors text-xs"
+                title="LinkedIn Profile"
               >
-                <FaLinkedin className="text-lg" />
+                <FaLinkedin />
+                <span>LinkedIn</span>
               </a>
               <a
                 href={PERSONAL_INFO.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-pink-500/50 hover:text-pink-400 hover:scale-110 transition-all"
+                className="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-pink-500/40 hover:text-pink-400 flex items-center gap-1.5 transition-colors text-xs"
+                title="Instagram Profile"
               >
-                <FaInstagram className="text-lg" />
-              </a>
-              <a
-                href={PERSONAL_INFO.discordUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400 hover:scale-110 transition-all"
-              >
-                <FaDiscord className="text-lg" />
+                <FaInstagram />
+                <span>Instagram</span>
               </a>
             </motion.div>
           </div>
 
-          {/* Right Column (55% Desktop Layout Split with Premium Video Card & 4 Badges) */}
-          <div className="w-full lg:w-[55%] flex flex-col items-center justify-center relative z-10">
+          {/* Right Column: Signature Technical Identity Composition (5 cols on desktop) */}
+          <div className="lg:col-span-5 flex justify-center w-full">
             <motion.div
-              variants={fadeIn('up', 0.4)}
+              variants={fadeIn('up', 0.3)}
               initial="hidden"
               animate="show"
-              className="relative w-full"
+              className="w-full max-w-sm sm:max-w-md"
             >
-              <HeroVideoCard />
-              <FloatingTechBadges />
+              {/* Technical Identity Framing Panel */}
+              <div className="rounded-2xl bg-[#0b101b] border border-white/10 p-4 sm:p-5 shadow-2xl relative overflow-hidden transition-all duration-300 hover:border-emerald-500/30">
+                
+                {/* Header Bar: Status & Geolocation */}
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4 text-[10px] font-mono">
+                  <div className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>SYSTEM ONLINE</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-slate-400">
+                    <HiLocationMarker className="text-slate-500 text-xs" />
+                    <span>KERALA, INDIA</span>
+                  </div>
+                </div>
+
+                {/* Profile Portrait Container */}
+                <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-slate-950 mb-4 border border-white/5">
+                  <Image
+                    src="/profile.jpg"
+                    alt="Alvin MS Portrait Photo"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 440px"
+                    className="object-cover object-top transition-transform duration-500 hover:scale-[1.02]"
+                  />
+                  {/* Subtle bottom gradient to enhance technical readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080c14] via-transparent to-transparent opacity-60 pointer-events-none" />
+
+                  {/* Overlaid Identity Badge */}
+                  <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-lg bg-[#080c14]/85 backdrop-blur-md border border-white/10 flex items-center justify-between text-xs font-mono">
+                    <div>
+                      <div className="text-white font-bold leading-none">Alvin MS</div>
+                      <div className="text-[10px] text-slate-400 mt-1">CS & AI Student • MBCCET</div>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-500/30 font-semibold">
+                        Engineer
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Technical Metadata Matrix */}
+                <div className="space-y-2 text-[11px] font-mono">
+                  <div className="p-2.5 rounded-lg bg-slate-900/70 border border-slate-800/80 flex items-center justify-between">
+                    <span className="text-slate-400">Current Focus:</span>
+                    <span className="text-white font-semibold">Distributed Systems & AI Platforms</span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="p-2 rounded-lg bg-slate-900/50 border border-slate-800/80">
+                      <span className="text-slate-500 block text-[9px] uppercase tracking-wider">Startups</span>
+                      <span className="text-emerald-400 font-semibold">NEXAURON & HELIX</span>
+                    </div>
+                    <div className="p-2 rounded-lg bg-slate-900/50 border border-slate-800/80">
+                      <span className="text-slate-500 block text-[9px] uppercase tracking-wider">Portfolio</span>
+                      <span className="text-cyan-400 font-semibold">50 Repos Architecture</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer Assurance Tag */}
+                <div className="mt-3 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-slate-500">
+                  <div className="flex items-center gap-1.5">
+                    <HiShieldCheck className="text-emerald-400 text-xs" />
+                    <span>Verified Production Architecture</span>
+                  </div>
+                  <span className="text-slate-400">© 2026</span>
+                </div>
+              </div>
             </motion.div>
           </div>
+
         </div>
       </div>
     </section>
   );
 }
+
+export default memo(HeroSection);

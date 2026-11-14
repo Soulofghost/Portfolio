@@ -1,49 +1,33 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
-const transitionVariants = {
-  initial: {
-    x: '100%',
-    width: '100%',
-  },
-  animate: {
-    x: '0%',
-    width: '0%',
-  },
-  exit: {
-    x: ['0%', '100%'],
-    width: ['0%', '100%'],
-  },
-};
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Transition() {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    // Unmount completely after animation to guarantee zero scroll or event interference
+    const timer = setTimeout(() => {
+      setVisible(false);
+    }, 700);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!visible) return null;
+
   return (
-    <>
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-50 bg-[#0f172a]"
-        variants={transitionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ delay: 0.2, duration: 0.6, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-40 bg-[#1e1b4b]"
-        variants={transitionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ delay: 0.4, duration: 0.6, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-30 bg-[#312e81]"
-        variants={transitionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ delay: 0.6, duration: 0.6, ease: 'easeInOut' }}
-      />
-    </>
+    <AnimatePresence>
+      <div className="fixed inset-0 z-50 pointer-events-none overflow-hidden" aria-hidden="true">
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="w-full h-full bg-[#080c14]"
+        />
+      </div>
+    </AnimatePresence>
   );
 }

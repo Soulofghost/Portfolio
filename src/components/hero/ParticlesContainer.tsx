@@ -23,8 +23,8 @@ function ParticlesContainer() {
 
     // Limit particles based on screen resolution (ultra-lightweight on mobile)
     const isMobile = width < 768;
-    const maxParticles = isMobile ? 18 : 36;
-    const particleCount = Math.min(Math.floor((width * height) / 25000), maxParticles);
+    const maxParticles = isMobile ? 14 : 28;
+    const particleCount = Math.min(Math.floor((width * height) / 32000), maxParticles);
 
     const particles: {
       x: number;
@@ -35,15 +35,15 @@ function ParticlesContainer() {
       color: string;
     }[] = [];
 
-    const colors = ['#38bdf8', '#a855f7', '#06b6d4', '#6366f1'];
+    const colors = ['#10b981', '#34d399', '#06b6d4', '#64748b'];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 1.5 + 1,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 1.4 + 0.8,
         color: colors[Math.floor(Math.random() * colors.length)],
       });
     }
@@ -52,7 +52,7 @@ function ParticlesContainer() {
       if (!isVisible || document.hidden) {
         isRunning = false;
         animationFrameId = null;
-        return; // Do NOT recursively call requestAnimationFrame when hidden!
+        return;
       }
 
       ctx.clearRect(0, 0, width, height);
@@ -77,13 +77,13 @@ function ParticlesContainer() {
           const dx = p1.x - p2.x;
           const dy = p1.y - p2.y;
           const distSq = dx * dx + dy * dy;
-          const maxDistSq = 100 * 100;
+          const maxDistSq = 90 * 90;
 
           if (distSq < maxDistSq) {
-            const alpha = (1 - distSq / maxDistSq) * 0.15;
+            const alpha = (1 - distSq / maxDistSq) * 0.12;
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(168, 85, 247, ${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.strokeStyle = `rgba(52, 211, 153, ${alpha})`;
+            ctx.lineWidth = 0.5;
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
@@ -150,7 +150,7 @@ function ParticlesContainer() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none z-0 opacity-40"
+      className="absolute inset-0 pointer-events-none z-0 opacity-25"
       aria-hidden="true"
     />
   );
