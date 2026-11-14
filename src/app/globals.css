@@ -117,3 +117,110 @@
 .safe-area-pb {
   padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
 }
+
+/* Multi-Layer Universe Animations & Light Trails */
+@keyframes meshDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-2%, 2.5%, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(2%, -2%, 0) scale(1);
+  }
+}
+
+@keyframes orbFloat1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(30px, -24px, 0);
+  }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-28px, 28px, 0);
+  }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(20px, 24px, 0);
+  }
+}
+
+@keyframes circuitFlow {
+  0% {
+    stroke-dashoffset: 120;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-mesh-drift {
+  animation: meshDrift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-orb-1 {
+  animation: orbFloat1 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-orb-2 {
+  animation: orbFloat2 29s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-orb-3 {
+  animation: orbFloat3 35s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-circuit-flow {
+  stroke-dasharray: 8 16;
+  animation: circuitFlow 14s linear infinite;
+}
+
+.paused-animations * {
+  animation-play-state: paused !important;
+}
+
+/* Light sweep hover effect on interactive boxes */
+.box-light-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.box-light-sweep::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    65deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.07) 50%,
+    transparent 65%
+  );
+  transform: translateX(-150%) rotate(25deg);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.box-light-sweep:hover::before,
+.box-light-sweep:focus-within::before {
+  transform: translateX(110%) rotate(25deg);
+}

@@ -1,12 +1,14 @@
 'use client';
 
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { fadeIn } from '@/utils/variants';
 import { PERSONAL_INFO } from '@/data/portfolioData';
-import { HiDownload, HiArrowRight, HiMail, HiLocationMarker, HiShieldCheck, HiCode } from 'react-icons/hi';
+import { HiDownload, HiArrowRight, HiMail, HiLocationMarker, HiShieldCheck } from 'react-icons/hi';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import UniverseBackground, { ActiveBoxType } from './UniverseBackground';
+import InteractiveUniverseBoxes from './InteractiveUniverseBoxes';
 
 interface HeroSectionProps {
   onOpenResumeModal: () => void;
@@ -24,6 +26,17 @@ function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [activeBox, setActiveBox] = useState<ActiveBoxType>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleHeroMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    if (rect.width > 0 && rect.height > 0) {
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      setMousePos({ x, y });
+    }
+  }, []);
 
   useEffect(() => {
     const currentRole = ROLES[roleIndex];
@@ -56,17 +69,11 @@ function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
   return (
     <section
       id="home"
+      onMouseMove={handleHeroMouseMove}
       className="relative w-full pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden"
     >
-      {/* Subtle restrained ambient glow - optimized, low-cost CSS radial gradients */}
-      <div
-        className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[500px] max-w-full h-[350px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-1/3 right-1/4 w-[300px] sm:w-[450px] max-w-full h-[300px] bg-cyan-500/5 blur-[100px] rounded-full pointer-events-none"
-        aria-hidden="true"
-      />
+      {/* Multi-Layer Live Animated Universe Background */}
+      <UniverseBackground activeBox={activeBox} mousePos={mousePos} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
@@ -283,6 +290,12 @@ function HeroSection({ onOpenResumeModal }: HeroSectionProps) {
           </div>
 
         </div>
+
+        {/* 4 Multi-Effect Interactive Project Boxes (SENTRIX, NexaAPIX, Open Source, Tech Matrix) */}
+        <InteractiveUniverseBoxes
+          activeBox={activeBox}
+          onHoverBox={setActiveBox}
+        />
       </div>
     </section>
   );
