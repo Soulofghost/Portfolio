@@ -152,7 +152,7 @@ Key capabilities:
 
 ```bash
 git clone https://github.com/Soulofghost/portfolio_x64.git
-cd portfolio_x64
+cd Portfolio
 npm ci
 ```
 
